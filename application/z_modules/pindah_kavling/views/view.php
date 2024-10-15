@@ -1,0 +1,1049 @@
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Data Pemesanan Rumah - Pindah Kavling</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="<?php echo base_url('dashboard'); ?>">Home</a></li>
+              <li class="breadcrumb-item active">Pembatalan</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+
+
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Data Pembatalan</h3>
+              <div class="card-tools">
+                <!--<a href="#" class="btn btn-info btn-sm" onclick="add()"><i class="fa fa-plus"></i> Buat Pembatalan</a>&nbsp;-->
+                <button class="btn btn-default btn-sm" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
+              </div>
+              <!-- /.card-tools -->
+        </div>
+
+        <!-- /.card-header -->
+        <div class="card-body">
+
+           <table id="table" class="table table-striped table-hover table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th width="5%">No</th>
+                        <th width="15%">Nomor SPR</th>
+                        <th width="30%">Nama Customer</th>
+                        <th width="10%">Lokasi Rumah</th>
+                        <th width="10%">Nomor VA</th>
+                        <th width="10%">Status Pesanan</th>
+                        <th width="15%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+          </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+</div>
+
+
+<!-- Bootstrap modal -->
+<div class="modal fade" id="modal_form" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">header</h3>
+            </div>
+            <div class="modal-body form">
+                <form action="#" id="form" class="form-horizontal">
+                    <input type="hidden" name="id" id="id"/> 
+                    <div class="form-body">
+
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Tanggal SPR</label>
+                            <div class="col-md-3">
+                                <input name="tanggal_spr" id="tanggal_spr" class="form-control" type="date" value="<?=date('Y-m-d');?>">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Nomor SPR</label>
+                            <div class="col-md-3">
+                                <input name="nomor_spr" id="nomor_spr" class="form-control" type="text" value="" readonly>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Nama Konsumen</label>
+                            <div class="col-md-3">
+                                <input name="nama_lengkap" id="nama_lengkap" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">No. KTP</label>
+                            <div class="col-md-3">
+                                <input name="no_ktp" id="no_ktp" class="form-control" type="text" readonly>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Alamat</label>
+                            <div class="col-md-7">
+                                <input name="alamat" id="alamat" class="form-control" type="text" readonly>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">No. Telp</label>
+                            <div class="col-md-3">
+                                <input name="no_telp" id="no_telp" class="form-control" type="text" readonly>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Nama Saudara</label>
+                            <div class="col-md-7">
+                                <input name="nama_saudara" id="nama_saudara" class="form-control" type="text" readonly>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Nomor HP Keluarga tidak serumah</label>
+                            <div class="col-md-3">
+                                <input name="no_hp_tidak_serumah" id="no_hp_tidak_serumah" class="form-control" type="text" readonly>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                    
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Lokasi Rumah</label>
+                            <div class="col-md-3">
+                                <input name="kode_kavling" id="kode_kavling" class="form-control" type="text" readonly>
+                                <input name="id_kavling" id="id_kavling" class="form-control" type="hidden">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Harga Rumah</label>
+                            <div class="col-md-3">
+                                <input name="harga_rumah" id="harga_rumah" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Nomor VA</label>
+                            <div class="col-md-3">
+                                <input name="nomor_va" id="nomor_va" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Nominal Booking</label>
+                            <div class="col-md-3">
+                                <input name="nominal_booking" id="nominal_booking" class="form-control" type="text" readonly>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Catatan</label>
+                            <div class="col-md-7">
+                                <input name="catatan" id="catatan" class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+
+
+
+
+
+
+<!-- Bootstrap modal -->
+<div class="modal fade" id="modal_form_ganti" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">header</h3>
+            </div>
+            <div class="modal-body form">
+                <form action="#" id="form_ganti" class="form-horizontal">
+                <input type="hidden" name="id" id="id"/> 
+                    <div class="form-body">
+
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Tanggal Ganti Nama</label>
+                            <div class="col-md-3">
+                                <input name="tanggal_ganti" id="tanggal_ganti" class="form-control" type="date" value="<?=date('Y-m-d');?>">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Nomor SPR</label>
+                            <div class="col-md-3">
+                                <input name="no_spr" id="no_spr" class="form-control" type="text" value="" readonly>
+                                <input name="id_spr" id="id_spr" class="form-control" type="hidden" value="">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="control-label col-md-3">Nama Konsumen</label>
+                            <div class="col-md-5">
+                                <input name="nama_lengkap" id="nama_lengkap" class="form-control" type="text" readonly>
+                                <input name="id_customer" id="id_customer" class="form-control" type="hidden" readonly>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <h5>Data Konsumen Pengganti</h5>
+                        <hr>
+
+
+                        <div class="form-group row">
+                <label for="nama_lengkap" class="col-sm-3 col-form-label">Nama Lengkap</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="nama_lengkap_pengganti" name="nama_lengkap_pengganti" required>
+                </div>
+            </div>
+
+             <!-- Nomor Telepon -->
+        <div class="form-group row">
+            <label for="no_telp" class="col-sm-3 col-form-label">Nomor Telepon</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="no_telp_pengganti" name="no_telp_pengganti" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="nik" class="col-sm-3 col-form-label">NIK</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="nik_pengganti" name="nik_pengganti" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="alamat" class="col-sm-3 col-form-label">Alamat</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="alamat_pengganti" name="alamat_pengganti" required onfocus="next()">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="foto_ktp" class="col-sm-3 col-form-label">Foto KTP</label>
+            <div class="col-sm-3">
+                <input type="file" class="form-control-file" id="foto_ktp" name="foto_ktp" accept="image/*" capture="camera" />
+            </div>
+        </div>
+
+        <!-- Foto NPWP -->
+        <div class="form-group row">
+            <label for="foto_npwp" class="col-sm-3 col-form-label">Foto NPWP</label>
+            <div class="col-sm-3">
+                <input type="file" class="form-control-file" id="foto_npwp" name="foto_npwp" accept="image/*" capture="camera" >
+            </div>
+        </div>
+
+        <!-- Foto KK -->
+        <div class="form-group row">
+            <label for="foto_kk" class="col-sm-3 col-form-label">Foto KK</label>
+            <div class="col-sm-3">
+                <input type="file" class="form-control-file" id="foto_kk" name="foto_kk" accept="image/*" capture="camera" >
+            </div>
+        </div>
+
+        <!-- Foto BPJS -->
+        <div class="form-group row">
+            <label for="foto_bpjs" class="col-sm-3 col-form-label">Foto BPJS Kesehatan</label>
+            <div class="col-sm-3">
+                <input type="file" class="form-control-file" id="foto_bpjs" name="foto_bpjs" accept="image/*" capture="camera" >
+            </div>
+        </div>
+
+
+        <!-- Foto ISTRI -->
+        <div class="form-group row">
+            <label for="foto_ktp_istri" class="col-sm-3 col-form-label">Foto KTP Pasangan</label>
+            <div class="col-sm-3">
+                <input type="file" class="form-control-file" id="foto_ktp_istri" name="foto_ktp_istri" accept="image/*" capture="camera" >
+            </div>
+        </div>
+
+        <!-- Foto Selfie -->
+        <div class="form-group row">
+            <label for="foto_calon_pemilik" class="col-sm-3 col-form-label">Foto Calon Pemohon</label>
+            <div class="col-sm-3">
+                <input type="file" class="form-control-file" id="foto_calon_pemilik" name="foto_calon_pemilik" accept="image/*" capture="camera" >
+            </div>
+        </div>
+
+            <hr>
+
+
+
+        <div class="form-group row">
+            <label for="nama_perusahaan" class="col-sm-3 col-form-label">Nama Perusahaan Tempat Bekerja</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="nama_perusahaan_pengganti" name="nama_perusahaan_pengganti" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="alamat_kantor" class="col-sm-3 col-form-label">Alamat Kantor</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="alamat_kantor_pengganti" name="alamat_kantor_pengganti" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="telp_kantor" class="col-sm-3 col-form-label">Telp Kantor</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="telp_kantor_pengganti" name="telp_kantor_pengganti" required>
+            </div>
+        </div>
+
+        <hr>
+
+
+        <!-- Email -->
+        <div class="form-group row">
+            <label for="email" class="col-sm-3 col-form-label">Email Konsumen</label>
+            <div class="col-sm-6">
+                <input type="email" class="form-control" id="email_pengganti" name="email_pengganti" required>
+            </div>
+        </div>
+
+    
+        <!-- Nomor Telepon Saudara -->
+        <div class="form-group row">
+            <label for="nama_saudara" class="col-sm-3 col-form-label">Nama Saudara tidak serumah</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="nama_saudara_pengganti" name="nama_saudara_pengganti" required>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="no_telp_saudara" class="col-sm-3 col-form-label">No. Telp Saudara Tidak Serumah</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="no_telp_saudara_pengganti" name="no_telp_saudara_pengganti" required>
+            </div>
+        </div>
+
+        <!-- Lokasi Kavling -->
+
+
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save_ganti()" class="btn btn-primary">Simpan</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- End Bootstrap modal -->
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+<?php  $this->load->view('template/footer'); ?>
+
+<script src="<?php echo base_url('theme_admin/plugins/select2/select2.min.js')?>"></script>
+
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('theme_admin/plugins/select2/select2.css') ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo base_url('theme_admin/plugins/select2/select2-bootstrap.css') ?>">
+
+
+<script type="text/javascript">
+
+  var save_method; //for save method string
+  var table;
+  var url = "<?php echo site_url(); ?>";
+
+  $(document).ready(function() {
+
+      //datatables
+      table = $('#table').DataTable({
+
+          "processing": true, //Feature control the processing indicator.
+          "serverSide": true, //Feature control DataTables' server-side processing mode.
+          "order": [], //Initial no order.
+
+          // Load data for the table's content from an Ajax source
+          "ajax": {
+              "url": url + "<?php echo $data_ref['uri_controllers']; ?>/ajax_list",
+              "type": "POST"
+          },
+
+          //Set column definition initialisation properties.
+          "columnDefs": [
+          {
+              "targets": [ -1 ], //last column
+              "orderable": false, //set not orderable
+          },
+          ],
+
+      });
+
+
+      //set input/textarea/select event when change value, remove class error and remove text help block
+      $("input").change(function(){
+          $(this).parent().parent().removeClass('has-error');
+          $(this).next().empty();
+      });
+      $("textarea").change(function(){
+          $(this).parent().parent().removeClass('has-error');
+          $(this).next().empty();
+      });
+      $("select").change(function(){
+          $(this).parent().parent().removeClass('has-error');
+          $(this).next().empty();
+      });
+
+  });
+
+   function add()
+   {
+       save_method = 'add';
+       $('#form')[0].reset(); // reset form on modals
+       $('.form-group').removeClass('has-error'); // clear error class
+       $('.help-block').empty(); // clear error string
+       $('#modal_form').modal('show'); // show bootstrap modal
+       $('.modal-title').text('Form SPR'); // Set Title to Bootstrap modal title
+   }
+
+   function edit(id)
+   {
+       save_method = 'update';
+       $('#form')[0].reset(); // reset form on modals
+       $('.form-group').removeClass('has-error'); // clear error class
+       $('.help-block').empty(); // clear error string
+    
+       //Ajax Load data from ajax
+       $.ajax({
+           url : "<?php echo site_url($data_ref['uri_controllers'].'/ajax_edit')?>/" + id,
+           type: "GET",
+           dataType: "JSON",
+           success: function(data)
+           {
+               $('[name="id"]').val(data.id_spr);
+               $('[name="nama_lengkap"]').val(data.nama_lengkap);
+               $('[name="nomor_spr"]').val(data.nomor_spr);
+               $('[name="no_ktp"]').val(data.nikCust);
+               $('[name="alamat"]').val(data.alamat);
+               $('[name="catatan"]').val(data.catatan);
+               $('[name="no_telp"]').val(data.no_telp);
+               $('[name="nomor_va"]').val(data.nomor_va);
+               $('[name="nama_saudara"]').val(data.nama_saudara);
+               $('[name="no_hp_tidak_serumah"]').val(data.no_telp_saudara);
+
+               $('#nama_lengkap').select2('data', {id: data.id_customer, text: data.nama_lengkap});
+               $('[name="kode_kavling"]').val(data.kode_kavling);
+               $('[name="harga_rumah"]').val(data.harga_rumah);
+               $('[name="nominal_booking"]').val(data.booking_fee_spr);
+
+               $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
+               $('.modal-title').text('Edit SPR'); // Set title to Bootstrap modal title
+
+           },
+           error: function (jqXHR, textStatus, errorThrown)
+           {
+               alert('Error get data from ajax');
+           }
+       });
+   }
+
+
+   function ganti(id)
+   {
+       $('#form_ganti')[0].reset(); // reset form on modals
+       $('.form-group').removeClass('has-error'); // clear error class
+       $('.help-block').empty(); // clear error string
+    
+       //Ajax Load data from ajax
+       $.ajax({
+           url : "<?php echo site_url($data_ref['uri_controllers'].'/ajax_ganti_nama')?>/" + id,
+           type: "GET",
+           dataType: "JSON",
+           success: function(data)
+           {
+               $('[name="id"]').val(data.id_spr);
+               $('[name="nama_lengkap"]').val(data.nama_lengkap);
+               $('[name="no_spr"]').val(data.nomor_spr);
+               $('[name="id_spr"]').val(data.id_spr);
+               $('[name="id_customer"]').val(data.idcs);
+               $('[name="kode_kavling"]').val(data.kode_kavling);
+               $('[name="tipe_rumah"]').val(data.tipe_rumah);
+               $('[name="no_ktp"]').val(data.nikCust);
+               $('[name="alamat"]').val(data.alamat);
+               $('[name="catatan"]').val(data.catatan);
+               $('[name="no_telp"]').val(data.no_telp);
+
+               $('#nama_lengkap').select2('data', {id: data.id_customer, text: data.nama_lengkap});
+               $('[name="id_kavling"]').val(data.id_kavling);
+               $('[name="harga_rumah"]').val(data.harga_rumah);
+               $('[name="nomor_va"]').val(data.nomor_va);
+               $('[name="nominal_booking"]').val(data.booking_fee_spr);
+
+               $('#modal_form_ganti').modal('show'); // show bootstrap modal when complete loaded
+               $('.modal-title').text('Ganti Nama Legalitas'); // Set title to Bootstrap modal title
+
+           },
+           error: function (jqXHR, textStatus, errorThrown)
+           {
+               alert('Error get data from ajax');
+           }
+       });
+   }
+
+   function reload_table()
+   {
+      table.ajax.reload(null,false); //reload datatable ajax
+   }
+
+   function save()
+   {
+       $('#btnSave').text('Menyimpan...'); //change button text
+       $('#btnSave').attr('disabled',true); //set button disable 
+       var url;
+    
+       if(save_method == 'add') {
+           url = "<?php echo site_url($data_ref['uri_controllers'].'/ajax_add')?>";
+       } else {
+           url = "<?php echo site_url($data_ref['uri_controllers'].'/ajax_update')?>";
+       }
+    
+       // ajax adding data to database
+       var formData = new FormData($('#form')[0]);
+       $.ajax({
+            url : url,
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "JSON",
+           success: function(data)
+           {
+    
+               if(data.status) //if success close modal and reload ajax table
+               {
+                   $('#modal_form').modal('hide');
+                   reload_table();
+                   Lobibox.notify('success', {
+                       size: 'mini',
+                       msg: 'Data berhasil Disimpan'
+                   });
+                   location.reload(); 
+               }
+               else
+               {
+                   for (var i = 0; i < data.inputerror.length; i++) 
+                   {
+                       $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+                       $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                   }
+               }
+               $('#btnSave').text('Simpan'); //change button text
+               $('#btnSave').attr('disabled',false); //set button enable 
+    
+    
+           },
+           error: function (jqXHR, textStatus, errorThrown)
+           {
+               alert('Error adding / update data');
+               $('#btnSave').text('Simpan'); //change button text
+               $('#btnSave').attr('disabled',false); //set button enable 
+    
+           }
+       });
+   }
+
+
+   function save_ganti()
+   {
+       $('#btnSave').text('Menyimpan...'); //change button text
+       $('#btnSave').attr('disabled',true); //set button disable 
+       var url = "<?php echo site_url($data_ref['uri_controllers'].'/ajax_ganti')?>";
+    
+       // ajax adding data to database
+       var formData = new FormData($('#form_ganti')[0]);
+       $.ajax({
+            url : url,
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "JSON",
+           success: function(data)
+           {
+    
+               if(data.status) //if success close modal and reload ajax table
+               {
+                   $('#modal_form_ganti').modal('hide');
+                   reload_table();
+                   Lobibox.notify('success', {
+                       size: 'mini',
+                       msg: 'Data berhasil Disimpan'
+                   });
+                   location.reload(); 
+               }
+               else
+               {
+                   for (var i = 0; i < data.inputerror.length; i++) 
+                   {
+                       $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error'); //select parent twice to select div form-group class and add has-error class
+                       $('[name="'+data.inputerror[i]+'"]').next().text(data.error_string[i]); //select span help-block class set text error string
+                   }
+               }
+               $('#btnSave').text('Simpan'); //change button text
+               $('#btnSave').attr('disabled',false); //set button enable 
+    
+    
+           },
+           error: function (jqXHR, textStatus, errorThrown)
+           {
+               alert('Error adding / update data');
+               $('#btnSave').text('Simpan'); //change button text
+               $('#btnSave').attr('disabled',false); //set button enable 
+    
+           }
+       });
+   }
+
+   var url_apps = '<?=base_url();?>';
+
+   function hapus(id){
+    $.confirm({
+      title: 'Confirm!',
+      content: 'Apakah anda yakin menghapus data ini ?',
+      buttons: {
+        confirm: function () {
+           $.ajax({
+              url : url + "<?php echo $data_ref['uri_controllers']; ?>/ajax_delete/" + id,
+              type: "POST",
+              dataType: "JSON",
+              success: function(data)
+              {
+                  //if success reload ajax table
+                  reload_table();
+                  Lobibox.notify('success', {
+                       size: 'mini',
+                       msg: 'Data berhasil Dihapus'
+                   });
+                location.reload(); 
+              },
+              error: function (jqXHR, textStatus, errorThrown)
+              {
+                  alert('Error deleting data');
+              }
+          });
+        },
+        cancel: function () {
+          
+        }
+      }
+    });
+  }
+
+
+
+  $("#nama_lengkap").select2({
+    ajax: {
+      url: url_apps+'spr/ajax_select',
+      dataType: 'json',
+      delay: 250,
+      data: function (params) {
+        return {
+          q: params, // search term
+        };
+      },
+      results: function (data, params) {
+        console.log(data);
+        return {
+            results: $.map(data, function (item) {
+                return {
+                  text: item.nama_lengkap,
+                    id: item.id_customer
+                }
+            })
+        };
+      },
+      cache: true
+    },
+    minimumInputLength: 1,
+  });  
+
+
+
+$('#nama_lengkap').on('change', function() {
+  
+  $.ajax({
+    url: url_apps + 'spr/get_select/' + $(this).val(),
+    type: 'GET',
+    dataType: 'json',
+  })
+  .done(function(data) {
+    $('#id_customer').val(data.id_customer);
+    $('#no_ktp').val(data.nik);
+    $('#alamat').val(data.alamat);
+    $('#no_telp').val(data.no_telp);
+    $('#no_hp_tidak_serumah').val(data.no_telp_saudara);
+    $('#nama_saudara').val(data.nama_saudara);
+    $('#nominal_booking').val(data.booking_fee);
+    $('#kode_kavling').val(data.kode_kavling);
+    $('#id_kavling').val(data.id_kavling);
+    
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+  
+});
+
+
+var harga_rumah = document.getElementById('harga_rumah');
+harga_rumah.addEventListener('keyup', function(e) {
+    harga_rumah.value = formatRupiah(this.value);
+});
+
+    
+/* Fungsi */
+function formatRupiah(bilangan, prefix) {
+var number_string = bilangan.replace(/[^,\d]/g, '').toString(),
+  split = number_string.split(','),
+  sisa = split[0].length % 3,
+  rupiah = split[0].substr(0, sisa),
+  ribuan = split[0].substr(sisa).match(/\d{1,3}/gi);
+
+if (ribuan) {
+  separator = sisa ? '.' : '';
+  rupiah += separator + ribuan.join('.');
+}
+
+rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+return prefix == undefined ? rupiah : (rupiah ? 'Rp. ' + rupiah : '');
+}
+
+function limitCharacter(event) {
+  key = event.which || event.keyCode;
+  if (key != 188 // Comma
+    &&
+    key != 8 // Backspace
+    &&
+    key != 17 && key != 86 & key != 67 // Ctrl c, ctrl v
+    &&
+    (key < 48 || key > 57) // Non digit
+    // Dan masih banyak lagi seperti tombol del, panah kiri dan kanan, tombol tab, dll
+  ) {
+    event.preventDefault();
+    return false;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {
+    // --- upload KTP ------------------------------------------------------------------------------>>>
+    $('#foto_ktp').on('change', function() {
+        var nik = document.getElementById('id').value;
+
+        if (nik == '') {
+            alert('Mohon lengkapi data NIK.');
+            $('#foto_ktp').val('');
+            $('#nik').focus();
+        }else{
+            var formData = new FormData();
+            formData.append('foto_ktp', $('#foto_ktp')[0].files[0]);
+            var linkurl = '<?=base_url();?>';
+            $.ajax({
+                url: linkurl + 'spr/do_upload_ktp/' + nik,
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    console.log(response);
+                    // Lakukan tindakan lain sesuai kebutuhan
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    if (xhr.status === 415) { // Unsupported Media Type (415) - File format not supported
+                        alert("Format file tidak didukung. Harap unggah file JPG atau PNG.");
+                        $('#foto_ktp').val('');
+                    }
+                }
+            });
+        }
+    });
+});
+
+
+    // --- upload NPWP ------------------------------------------------------------------------------>>>
+    $('#foto_npwp').on('change', function() {
+        var nik = document.getElementById('id').value;
+        if (nik === '') {
+            alert('Mohon lengkapi data NIK.');
+            $('#foto_ktp').val('');
+            $('#nik').focus();
+        }else{
+
+            var formData = new FormData();
+            formData.append('foto_npwp', $('#foto_npwp')[0].files[0]);
+            var linkurl = '<?=base_url();?>';
+            $.ajax({
+                url: linkurl + 'spr/do_upload_npwp/' + nik, // Sesuaikan dengan URL route yang Anda tentukan
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(response) {
+                    console.log(response);
+                    // Lakukan tindakan lain sesuai kebutuhan
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    if (xhr.status === 415) { // Unsupported Media Type (415) - File format not supported
+                        alert("Format file tidak didukung. Harap unggah file JPG atau PNG.");
+                        $('#foto_npwp').val('');
+                    }
+                }
+            });
+        }
+    });
+
+    // --- upload Foto KK ------------------------------------------------------------------------------>>>
+    $('#foto_kk').on('change', function() {
+        var nik = document.getElementById('id').value;
+        var formData = new FormData();
+        formData.append('foto_kk', $('#foto_kk')[0].files[0]);
+        var linkurl = '<?=base_url();?>';
+        $.ajax({
+            url: linkurl + 'spr/do_upload_kk/' + nik, // Sesuaikan dengan URL route yang Anda tentukan
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                    console.log(response);
+                    // Lakukan tindakan lain sesuai kebutuhan
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    if (xhr.status === 415) { // Unsupported Media Type (415) - File format not supported
+                        alert("Format file tidak didukung. Harap unggah file JPG atau PNG.");
+                        $('#foto_kk').val('');
+                    }
+                }
+        });
+    });
+
+    // --- upload Foto BPJS ------------------------------------------------------------------------------>>>
+    $('#foto_bpjs').on('change', function() {
+        var nik = document.getElementById('id').value;
+        var formData = new FormData();
+        formData.append('foto_bpjs', $('#foto_bpjs')[0].files[0]);
+        var linkurl = '<?=base_url();?>';
+        $.ajax({
+            url: linkurl + 'spr/do_upload_bpjs/' + nik, // Sesuaikan dengan URL route yang Anda tentukan
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                    console.log(response);
+                    // Lakukan tindakan lain sesuai kebutuhan
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    if (xhr.status === 415) { // Unsupported Media Type (415) - File format not supported
+                        alert("Format file tidak didukung. Harap unggah file JPG atau PNG.");
+                        $('#foto_bpjs').val('');
+                    }
+                }
+        });
+    });
+
+    // --- upload KTP Suami ------------------------------------------------------------------------------>>>
+    $('#foto_ktp_suami').on('change', function() {
+        var nik = document.getElementById('id').value;
+        var formData = new FormData();
+        formData.append('foto_ktp_suami', $('#foto_ktp_suami')[0].files[0]);
+        var linkurl = '<?=base_url();?>';
+        $.ajax({
+            url: linkurl + 'spr/upload_image_method/' + nik, // Sesuaikan dengan URL route yang Anda tentukan
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                    console.log(response);
+                    // Lakukan tindakan lain sesuai kebutuhan
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    if (xhr.status === 415) { // Unsupported Media Type (415) - File format not supported
+                        alert("Format file tidak didukung. Harap unggah file JPG atau PNG.");
+                        $('#foto_ktp_suami').val('');
+                    }
+                }
+        });
+    });
+
+    // --- upload KTP ISTRI ------------------------------------------------------------------------------>>>
+    $('#foto_ktp_istri').on('change', function() {
+        var nik = document.getElementById('id').value;
+        var formData = new FormData();
+        formData.append('foto_ktp_istri', $('#foto_ktp_istri')[0].files[0]);
+        var linkurl = '<?=base_url();?>';
+        $.ajax({
+            url: linkurl + 'spr/do_upload_ktp_istri/' + nik, // Sesuaikan dengan URL route yang Anda tentukan
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                    console.log(response);
+                    // Lakukan tindakan lain sesuai kebutuhan
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    if (xhr.status === 415) { // Unsupported Media Type (415) - File format not supported
+                        alert("Format file tidak didukung. Harap unggah file JPG atau PNG.");
+                        $('#foto_ktp_istri').val('');
+                    }
+                }
+        });
+    });
+
+
+    // --- upload Calon Pemilik ------------------------------------------------------------------------------>>>
+    $('#foto_calon_pemilik').on('change', function() {
+        var nik = document.getElementById('id').value;
+        var formData = new FormData();
+        formData.append('foto_calon_pemilik', $('#foto_calon_pemilik')[0].files[0]);
+        var linkurl = '<?=base_url();?>';
+        $.ajax({
+            url: linkurl + 'spr/do_upload_calon_pemilik/' + nik, // Sesuaikan dengan URL route yang Anda tentukan
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                    console.log(response);
+                    // Lakukan tindakan lain sesuai kebutuhan
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    if (xhr.status === 415) { // Unsupported Media Type (415) - File format not supported
+                        alert("Format file tidak didukung. Harap unggah file JPG atau PNG.");
+                        $('#foto_calon_pemilik').val('');
+                    }
+                }
+        });
+    });
+
+
+    // --- upload Bukti Transfer ------------------------------------------------------------------------------>>>
+    $('#bukti_transfer').on('change', function() {
+        var nik = document.getElementById('id').value;
+        var formData = new FormData();
+        formData.append('bukti_transfer', $('#bukti_transfer')[0].files[0]);
+        var linkurl = '<?=base_url();?>';
+        $.ajax({
+            url: linkurl + 'spr/do_upload_bukti_transfer/' + nik, // Sesuaikan dengan URL route yang Anda tentukan
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                    console.log(response);
+                    // Lakukan tindakan lain sesuai kebutuhan
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    if (xhr.status === 415) { // Unsupported Media Type (415) - File format not supported
+                        alert("Format file tidak didukung. Harap unggah file JPG atau PNG.");
+                        $('#bukti_transfer').val('');
+                    }
+                }
+        });
+    });
+
+
+
+
+</script>
+
+
+
+
+
