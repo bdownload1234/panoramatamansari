@@ -5,7 +5,7 @@ header("Expires: 0");
 header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 header("Cache-Control: private",false);
 ?>
-<h2>Data Keuangan Booking</h2>
+<h2>Data Realisasi MK</h2>
 <table border="1">
     <tr>
         <th width="5%">No</th>

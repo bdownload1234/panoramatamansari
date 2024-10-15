@@ -21,7 +21,11 @@ class Realisasi_mk extends CI_Controller {
 		    LEFT JOIN customer b ON a.id_customer = b.id_customer
 		    LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
 		")->result();
+
+		$bank = $this->db->from('bank')->get()->result();
+
 		$user_data['data'] = $data;
+		$user_data['bank'] = $bank;
 		// $user_data['noCust'] = $this->no_cust();
 		$this->load->view('template/header',$user_data);
 		$this->load->view('index',$user_data);
@@ -106,6 +110,7 @@ class Realisasi_mk extends CI_Controller {
 	    $data = [];
 	    try{
 	        $data['realisasi_mk'] = str_replace(',', '', $post['realisasi_mk']);
+					$data['bank_id'] = $post['bank_edit'];
 	        $data['dana_blokir_progress_bangunan_1'] = str_replace(',', '', $post['dana_blokir_progress_bangunan_1']);
 	        $data['dana_blokir_progress_bangunan_2'] = str_replace(',', '', $post['dana_blokir_progress_bangunan_2']);
 	        $data['dana_blokir_sertifikat'] = str_replace(',', '', $post['dana_blokir_sertifikat']);
@@ -129,6 +134,8 @@ class Realisasi_mk extends CI_Controller {
     	            $data['id_header'] = $post['id'];
     	            $data['pencairan'] = str_replace(',', '', $cair);
     	            $data['tanggal_pencairan'] = $post['tanggal_pencairan'][$key];
+									$data['pencairan_id'] = $post['jenis_pencairan'][$key];
+									$data['pencairan_lain'] = $post['jenis_pencairan_lain'][$key];
     	           // $date = date_create($post['tanggal_pencairan'][$key]);
     	           // $data['tanggal_pencairan'] = date_format($date,"Y-m-d");
     	            $this->db->insert('realisasi_mk_dt', $data);

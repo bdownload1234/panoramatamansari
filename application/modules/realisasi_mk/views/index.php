@@ -125,6 +125,17 @@
                     <input type="text" class="form-control" name="kode_blok" id="kode_blok" readonly>
                 </div>
                 <div class="form-group">
+                    <label for="">Bank</label>
+                    <select name="bank" id="bank" class="form-control" required>
+                        <option value="">Pilih Bank</option>
+                        <?php
+                            foreach($bank as $key => $datax){
+                                echo '<option value="'.$datax->id_bank.'">'.$datax->nama_bank.'</option>';
+                            }
+                        ?>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="">Realisasi MK</label>
                     <input type="text" class="form-control" name="realisasi_mk" id="realisasi_mk" value="0" required>
                 </div>
@@ -132,13 +143,31 @@
                     <thead>
                         <tr>
                             <th><button type="button" class="btn btn-sm btn-success" id="btnTambahPencairan" title="tambah">Tambah</button></th>
-                            <th>Pencairan</th>
+                            <th>Jenis Pencairan</th>
+                            <th>Nominal</th>
                             <th>Tanggal</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td></td>
+                            <td>
+                                <select name="jenis_pencairan[]" id="jenis_pencairan" class="form-control jenis_pencairan" required>
+                                    <option value="">Pilih Jenis Pencairan</option>
+                                    <option value="1">Progress Bangunan 1</option>
+                                    <option value="2">Progress Bangunan 2</option>
+                                    <option value="3">Sertifikat</option>
+                                    <option value="4">IMB</option>
+                                    <option value="5">Bestek</option>
+                                    <option value="6">Listrik</option>
+                                    <option value="7">PPJB</option>
+                                    <option value="8">BPHTB</option>
+                                    <option value="9">PBB</option>
+                                    <option value="10">Lain-lain</option>
+                                </select>
+
+                                <input type="text" name="jenis_pencairan_lain[]" id="jenis_pencairan_lain" class="form-control jenis_pencairan_lain" style="display:none;" placeholder="Tulis Jenis Pencairan Lain">
+                            </td>
                             <td><input type="text" class="form-control pencairan" name="pencairan[]" id="pencairan1" value="0" required></td>
                             <td><input type="date" class="form-control tanggal_pencairan" name="tanggal_pencairan[]" id="tanggal_pencairan1" required></td>
                         </tr>
@@ -211,9 +240,24 @@
                     <input name="id_customer" id="id_customer_edit" class="form-control" type="text" required>
                 </div>
                 <div class="form-group">
+                    <label for="">Tanggal Akad</label>
+                    <input type="date" class="form-control" name="tanggal_akad" id="tanggal_akad_edit" disabled>
+                </div>
+                <div class="form-group">
                     <label for="">Blok Kavling</label>
                     <input type="hidden" class="form-control" name="id_blok" id="id_blok_edit" readonly>
                     <input type="text" class="form-control" name="kode_blok" id="kode_blok_edit" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="">Bank</label>
+                    <select name="bank_edit" id="bank_edit" class="form-control" required>
+                        <option value="">Pilih Bank</option>
+                        <?php
+                            foreach($bank as $key => $datax){
+                                echo '<option value="'.$datax->id_bank.'">'.$datax->nama_bank.'</option>';
+                            }
+                        ?>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="">Realisasi MK</label>
@@ -223,13 +267,31 @@
                     <thead>
                         <tr>
                             <th><button type="button" class="btn btn-sm btn-success" id="btnTambahPencairanEdit" title="tambah">Tambah</button></th>
-                            <th>Pencairan</th>
+                            <th>Jenis Pencairan</th>
+                            <th>Nominal</th>
                             <th>Tanggal</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td></td>
+                            <td>
+                                <select name="jenis_pencairan[]" id="jenis_pencairan" class="form-control jenis_pencairan" required>
+                                    <option value="">Pilih Jenis Pencairan</option>
+                                    <option value="1">Progress Bangunan 1</option>
+                                    <option value="2">Progress Bangunan 2</option>
+                                    <option value="3">Sertifikat</option>
+                                    <option value="4">IMB</option>
+                                    <option value="5">Bestek</option>
+                                    <option value="6">Listrik</option>
+                                    <option value="7">PPJB</option>
+                                    <option value="8">BPHTB</option>
+                                    <option value="9">PBB</option>
+                                    <option value="10">Lain-lain</option>
+                                </select>
+
+                                <input type="text" name="jenis_pencairan_lain[]" id="jenis_pencairan_lain" class="form-control jenis_pencairan_lain" style="display:none;" placeholder="Tulis Jenis Pencairan Lain">
+                            </td>
                             <td><input type="text" class="form-control pencairan" name="pencairan[]" id="pencairan_edit1" value="0" required></td>
                             <td><input type="date" class="form-control tanggal_pencairan" name="tanggal_pencairan[]" id="tanggal_pencairan_edit1" required></td>
                         </tr>
@@ -374,6 +436,23 @@
         $('#btnTambahPencairan').on('click', function(){
             var html = `<tr>
                             <td><button type="button" class="btn btn-sm btn-danger btnHapusPencairan" id="" title="delete">Hapus</button></td>
+                            <td>
+                                <select name="jenis_pencairan[]" id="jenis_pencairan" class="form-control jenis_pencairan" required>
+                                    <option value="">Pilih Jenis Pencairan</option>
+                                    <option value="1">Progress Bangunan 1</option>
+                                    <option value="2">Progress Bangunan 2</option>
+                                    <option value="3">Sertifikat</option>
+                                    <option value="4">IMB</option>
+                                    <option value="5">Bestek</option>
+                                    <option value="6">Listrik</option>
+                                    <option value="7">PPJB</option>
+                                    <option value="8">BPHTB</option>
+                                    <option value="9">PBB</option>
+                                    <option value="10">Lain-lain</option>
+                                </select>
+
+                                <input type="text" name="jenis_pencairan_lain[]" id="jenis_pencairan_lain" class="form-control jenis_pencairan_lain" style="display:none;" placeholder="Tulis Jenis Pencairan Lain">
+                            </td>
                             <td><input type="text" class="form-control pencairan" name="pencairan[]" id="" value="0" required></td>
                             <td><input type="date" class="form-control tanggal_pencairan" name="tanggal_pencairan[]" id="" required></td>
                         </tr>`;
@@ -383,9 +462,41 @@
             reverse:true
             })
         })
+
+        // Event delegation to handle change event on dynamically added select elements
+        $('#formRealisasiMk #table_pencairan').on('change', '.jenis_pencairan', function() {
+            var otherInput = $(this).closest('td').find('.jenis_pencairan_lain');
+            console.log("ligmaballs")
+            
+            if ($(this).val() === '10') {
+                otherInput.show(); // Show the text input
+                otherInput.prop('required', true); // Make it required
+            } else {
+                otherInput.hide(); // Hide the text input
+                otherInput.prop('required', false); // Remove the required attribute
+            }
+        });
+
         $('#btnTambahPencairanEdit').on('click', function(){
             var html = `<tr>
                             <td><button type="button" class="btn btn-sm btn-danger btnHapusPencairan" id="" title="delete">Hapus</button></td>
+                            <td>
+                                <select name="jenis_pencairan[]" id="jenis_pencairan" class="form-control jenis_pencairan" required>
+                                    <option value="">Pilih Jenis Pencairan</option>
+                                    <option value="1">Progress Bangunan 1</option>
+                                    <option value="2">Progress Bangunan 2</option>
+                                    <option value="3">Sertifikat</option>
+                                    <option value="4">IMB</option>
+                                    <option value="5">Bestek</option>
+                                    <option value="6">Listrik</option>
+                                    <option value="7">PPJB</option>
+                                    <option value="8">BPHTB</option>
+                                    <option value="9">PBB</option>
+                                    <option value="10">Lain-lain</option>
+                                </select>
+
+                                <input type="text" name="jenis_pencairan_lain[]" id="jenis_pencairan_lain" class="form-control jenis_pencairan_lain" style="display:none;" placeholder="Tulis Jenis Pencairan Lain">
+                            </td>
                             <td><input type="text" class="form-control pencairan" name="pencairan_edit[]" id="" value="0" required></td>
                             <td><input type="date" class="form-control tanggal_pencairan" name="tanggal_pencairan[]" id="" required></td>
                         </tr>`;
@@ -452,6 +563,7 @@
                     $('#formRealisasiMkEdit #dana_blokir_bphtb_edit').val(formatRupiah(data.dana_blokir_bphtb, ''))
                     $('#formRealisasiMkEdit #dana_blokir_pbb_edit').val(formatRupiah(data.dana_blokir_pbb, ''))
                     $('#formRealisasiMkEdit #dana_dll_edit').val(formatRupiah(data.dana_dll, ''))
+                    $('#formRealisasiMkEdit #bank_edit').val(data.bank_id).trigger('change');
                     
                     $('#formRealisasiMkEdit #table_pencairan tbody tr').remove();
                     for(var i=0; i < response.data_dt.length; i++){
@@ -459,6 +571,23 @@
                         var html = `
                         <tr>
                             <td></td>
+                            <td>
+                                <select name="jenis_pencairan[]" id="jenis_pencairan" class="form-control jenis_pencairan" required>
+                                    <option value="">Pilih Jenis Pencairan</option>
+                                    <option value="1" `+(response.data_dt[i].pencairan_id == 1 ? 'selected' : '')+`>Progress Bangunan 1</option>
+                                    <option value="2" `+(response.data_dt[i].pencairan_id == 2 ? 'selected' : '')+`>Progress Bangunan 2</option>
+                                    <option value="3" `+(response.data_dt[i].pencairan_id == 3 ? 'selected' : '')+`>Sertifikat</option>
+                                    <option value="4" `+(response.data_dt[i].pencairan_id == 4 ? 'selected' : '')+`>IMB</option>
+                                    <option value="5" `+(response.data_dt[i].pencairan_id == 5 ? 'selected' : '')+`>Bestek</option>
+                                    <option value="6" `+(response.data_dt[i].pencairan_id == 6 ? 'selected' : '')+`>Listrik</option>
+                                    <option value="7" `+(response.data_dt[i].pencairan_id == 7 ? 'selected' : '')+`>PPJB</option>
+                                    <option value="8" `+(response.data_dt[i].pencairan_id == 8 ? 'selected' : '')+`>BPHTB</option>
+                                    <option value="9" `+(response.data_dt[i].pencairan_id == 9 ? 'selected' : '')+`>PBB</option>
+                                    <option value="10" `+(response.data_dt[i].pencairan_id == 10 ? 'selected' : '')+`>Lain-lain</option>
+                                </select>
+
+                                <input type="text" name="jenis_pencairan_lain[]" id="jenis_pencairan_lain" class="form-control jenis_pencairan_lain" style="display:none;" placeholder="Tulis Jenis Pencairan Lain">
+                            </td>
                             <td><input type="text" class="form-control pencairan" name="pencairan_edit[]" id="pencairan_edit`+(i+1)+`" value="`+pencairan+`" required></td>
                             <td><input type="date" class="form-control tanggal_pencairan" name="tanggal_pencairan[]" id="tanggal_pencairan_edit`+(i+1)+`" value="`+response.data_dt[i].tanggal_pencairan+`" required></td>
                         </tr>
