@@ -207,17 +207,18 @@ class Daftar_hadir extends CI_Controller {
 
 
     public function download()
-	{
-	    $this->db->select('daftar_hadir.*, customer.nama_lengkap, notaris.nama_notaris, bank.nama_bank');
-		$this->db->from('daftar_hadir');
-		$this->db->join('customer', 'daftar_hadir.id_customer = customer.id_customer', 'left');
-		$this->db->join('notaris', 'daftar_hadir.id_notaris = notaris.id_notaris', 'left');
-		$this->db->join('bank', 'daftar_hadir.id_bank = bank.id_bank', 'left');
+		{
+			$this->db->select('daftar_hadir.*, customer.nama_lengkap, notaris.nama_notaris, bank.nama_bank, spr.nomor_spr');
+			$this->db->from('daftar_hadir');
+			$this->db->join('customer', 'daftar_hadir.id_customer = customer.id_customer', 'left');
+			$this->db->join('notaris', 'daftar_hadir.id_notaris = notaris.id_notaris', 'left');
+			$this->db->join('bank', 'daftar_hadir.id_bank = bank.id_bank', 'left');
+			$this->db->join('spr', 'customer.id_customer = spr.id_customer', 'left');
+			
+			$data['downData'] = $this->db->get()->result();
+			$this->load->view('download', $data);
+		}
 		
-		$data['downData'] = $this->db->get()->result();
-		$this->load->view('download', $data);
-	}
-	
 	function kirim_pesan($id)
 	{
 	    $this->pesan_marketing($id);

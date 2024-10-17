@@ -44,10 +44,12 @@ class Cicilan_dp extends CI_Controller {
 	    
 	    $data_customer = $this->db->from('customer')->where('id_customer', $id_customer)->get()->row_array();
 	    $data_kavling = $this->db->from('kavling_peta')->where('id_kavling', $data_customer['id_kavling'])->get()->row_array();
+			$data_akad = $this->db->from('daftar_hadir')->where('id_customer', $id_customer)->get()->row_array();
 	    
 	    $response = [];
 	    $response['data_customer'] = $data_customer;
 	    $response['data_kavling'] = $data_kavling;
+			$response['data_akad'] = $data_akad;
 	    echo json_encode($response);
 	}
 	

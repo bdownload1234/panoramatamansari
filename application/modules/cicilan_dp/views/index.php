@@ -43,7 +43,7 @@
                             <th width="20%">Nama Customer</th>
                             <th>Blok Kavling</th>
                             <th>Nominal Booking</th>
-                            <th>Harga Jual AJB Kredit</th>
+                            <th>Harga Jual</th>
                             <th>Harga Acc Bank</th>
                             <th>Sisa Kewajiban</th>
                             <th>Kekurangan</th>

@@ -7,6 +7,8 @@ header("Cache-Control: max-age=0");
 <table border="1">
         <tr>
             <th width="5%">No</th>
+            <th>Nomor SPR</th>
+            <th>Tempat</th>
             <th>Tanggal Akad</th>
             <th>Jam Akad</th>
             <th>Blok Unit</th>
@@ -24,6 +26,8 @@ header("Cache-Control: max-age=0");
         foreach ($downData as $dt) {
             echo "<tr>
             <td>".$no++."</td>
+            <td>".$dt->nomor_spr."</td>
+            <td>".$dt->tempat."</td>
             <td>".(date_format(date_create($dt->tanggal), "d/m/Y"))."</td>
             <td>".$dt->jam."</td>
             <td>".$dt->lokasi_kavling."</td>

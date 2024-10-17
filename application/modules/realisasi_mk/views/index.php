@@ -24,7 +24,11 @@
             <div class="card-header">
               <h3 class="card-title">Realisasi MK</h3>
                   <div class="card-tools">
-                      <a href="<?=base_url('realisasi_mk/excel');?>" target="_blank" class="btn btn-info btn-sm" >Download Data Excel</a>&nbsp;
+                      <!-- make a daterange picker for export to excel  -->
+                    <input type="text" name="export_range" id="export_range">
+                    &nbsp;
+                    <!-- <a href="<?=base_url('realisasi_mk/excel');?>" target="_blank" class="btn btn-info btn-sm" >Download Data Excel</a>&nbsp; -->
+                    <button type="button" class="btn btn-info btn-sm" id="btnExport">Download Data Excel</button>
                     <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modalAdd">
                         Tambah Data
                     </button>
@@ -118,6 +122,10 @@
                 <div class="form-group">
                     <label for="">Nama Customer</label>
                     <input name="id_customer" id="id_customer" class="form-control" type="text" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Tanggal Akad</label>
+                    <input type="date" class="form-control" name="tanggal_akad" id="tanggal_akad" disabled>
                 </div>
                 <div class="form-group">
                     <label for="">Blok Kavling</label>
@@ -352,8 +360,11 @@
 
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('theme_admin/plugins/select2/select2.css') ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('theme_admin/plugins/select2/select2-bootstrap.css') ?>">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.8/jquery.mask.min.js" integrity="sha512-hAJgR+pK6+s492clbGlnrRnt2J1CJK6kZ82FZy08tm6XG2Xl/ex9oVZLE6Krz+W+Iv4Gsr8U2mGMdh0ckRH61Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment/min/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <script>
     var url_apps = "<?=base_url();?>";
@@ -377,6 +388,18 @@
     
     $(document).ready(function(){
         $('#table').DataTable();
+
+        // export_range datepicker
+        $('#export_range').daterangepicker({
+            locale: {
+                format: 'YYYY-MM-DD'
+            }
+        });
+
+        $('#btnExport').on('click', function(){
+            var range = $('#export_range').val();
+            window.location.href = url_apps + 'realisasi_mk/excel?range=' + range;
+        })
         
         $("#id_customer, #id_customer_edit").select2({
             ajax: {
@@ -416,12 +439,14 @@
                 {
                     var data_customer = data.data_customer;
                     var data_kavling = data.data_kavling;
+                    var data_akad = data.data_akad;
                     $('#id_blok').val(data_kavling.id_kavling)
                     $('#id_blok_edit').val(data_kavling.id_kavling)
                     $('#kode_blok').val(data_kavling.kode_kavling)
                     $('#kode_blok_edit').val(data_kavling.kode_kavling)
                     $('#harga_jual_ajb_kredit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
                     $('#harga_jual_ajb_kredit_edit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
+                    $('#tanggal_akad').val(!data_akad ? '' : data_akad.tanggal_akad)
                 }
             })
         })
@@ -564,6 +589,7 @@
                     $('#formRealisasiMkEdit #dana_blokir_pbb_edit').val(formatRupiah(data.dana_blokir_pbb, ''))
                     $('#formRealisasiMkEdit #dana_dll_edit').val(formatRupiah(data.dana_dll, ''))
                     $('#formRealisasiMkEdit #bank_edit').val(data.bank_id).trigger('change');
+                    $('#formRealisasiMkEdit #tanggal_akad_edit').val(data.tanggal_akad)
                     
                     $('#formRealisasiMkEdit #table_pencairan tbody tr').remove();
                     for(var i=0; i < response.data_dt.length; i++){

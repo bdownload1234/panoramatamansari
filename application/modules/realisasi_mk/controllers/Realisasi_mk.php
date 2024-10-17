@@ -91,9 +91,10 @@ class Realisasi_mk extends CI_Controller {
 	public function get_data(){
 	    $id = $_GET['id'];
 	    $data = $this->db->query("
-		    SELECT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as pencairan,  b.nama_lengkap, c.kode_kavling, a.* FROM realisasi_mk a
+		    SELECT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as pencairan, d.tanggal as tanggal_akad, b.nama_lengkap, c.kode_kavling, a.* FROM realisasi_mk a
 		    LEFT JOIN customer b ON a.id_customer = b.id_customer
 		    LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
+				LEFT JOIN daftar_hadir d ON d.id_customer = b.id_customer
 		    WHERE a.id = '$id'
 		")->result_array();
 		
@@ -152,11 +153,17 @@ class Realisasi_mk extends CI_Controller {
 	
 	function excel()
     {
+				$date = $_GET['range'];
+				$range = explode(' - ', $date);
+				$range = "WHERE d.tanggal_pencairan BETWEEN '".$range[0]."' AND '".$range[1]."'";
         $data = $this->db->query("
-		    SELECT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as pencairan,  b.nama_lengkap, c.kode_kavling, a.* FROM realisasi_mk a
-		    LEFT JOIN customer b ON a.id_customer = b.id_customer
-		    LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
-		")->result();
+					SELECT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as total_pencairan,  b.nama_lengkap, c.kode_kavling, a.*,  d.* FROM realisasi_mk a
+					LEFT JOIN customer b ON a.id_customer = b.id_customer
+					LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
+					LEFT JOIN realisasi_mk_dt d ON a.id = d.id_header
+					$range
+					ORDER BY a.id DESC
+				")->result();
 		$user_data['data'] = $data;
         $this->load->view('excel', $user_data);
     }
