@@ -17,9 +17,19 @@ class Realisasi_mk extends CI_Controller {
 	{
 		$user_data['data_ref'] = '';
 		$data = $this->db->query("
-		    SELECT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as pencairan,  b.nama_lengkap, c.kode_kavling, a.* FROM realisasi_mk a
-		    LEFT JOIN customer b ON a.id_customer = b.id_customer
-		    LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
+		  SELECT 
+					CASE 
+							WHEN d.id_hadir IS NOT NULL THEN ROW_NUMBER() OVER(ORDER BY a.id) 
+							ELSE 'Tidak ada no Akad' 
+					END AS no_akad,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) AS pencairan,  
+					b.nama_lengkap, 
+					c.kode_kavling, 
+					a.* 
+			FROM realisasi_mk a
+			LEFT JOIN customer b ON a.id_customer = b.id_customer
+			LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
+			LEFT JOIN daftar_hadir d ON a.id_customer = d.id_customer;
 		")->result();
 
 		$bank = $this->db->from('bank')->get()->result();

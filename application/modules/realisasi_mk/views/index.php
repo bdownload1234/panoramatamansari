@@ -74,7 +74,7 @@
                                 }
                                 echo '
                                     <tr>
-                                        <td>'.$no.'</td>
+                                        <td>'.$datax->no_akad.'</td>
                                         <td>'.$datax->nama_lengkap.'</td>
                                         <td>'.$datax->kode_kavling.'</td>
                                         <td>'.number_format($datax->realisasi_mk, 2).'</td>
@@ -126,6 +126,14 @@
                 <div class="form-group">
                     <label for="">Tanggal Akad</label>
                     <input type="date" class="form-control" name="tanggal_akad" id="tanggal_akad" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="">Harga Jual Cash</label>
+                    <input type="text" class="form-control" name="harga_jual_cash" id="harga_jual_cash" value="0" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="">Harga Jual Kredit</label>
+                    <input type="text" class="form-control" name="harga_jual_kredit" id="harga_jual_kredit" value="0" disabled>
                 </div>
                 <div class="form-group">
                     <label for="">Blok Kavling</label>
@@ -250,6 +258,14 @@
                 <div class="form-group">
                     <label for="">Tanggal Akad</label>
                     <input type="date" class="form-control" name="tanggal_akad" id="tanggal_akad_edit" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="">Harga Jual Cash</label>
+                    <input type="text" class="form-control" name="harga_jual_cash_edit" id="harga_jual_cash_edit" value="0" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="">Harga Jual Kredit</label>
+                    <input type="text" class="form-control" name="harga_jual_kredit_edit" id="harga_jual_kredit_edit" value="0" disabled>
                 </div>
                 <div class="form-group">
                     <label for="">Blok Kavling</label>
@@ -447,6 +463,12 @@
                     $('#harga_jual_ajb_kredit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
                     $('#harga_jual_ajb_kredit_edit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
                     $('#tanggal_akad').val(!data_akad ? '' : data_akad.tanggal_akad)
+                    $('#tanggal_akad_edit').val(!data_akad ? '' : data_akad.tanggal_akad)
+                    $('#harga_jual_cash').val(formatRupiah(data_kavling.hrg_jual, ''))
+                    $('#harga_jual_cash_edit').val(formatRupiah(data_kavling.hrg_jual, ''))
+
+                    $('#harga_jual_kredit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
+                    $('#harga_jual_kredit_edit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
                 }
             })
         })
