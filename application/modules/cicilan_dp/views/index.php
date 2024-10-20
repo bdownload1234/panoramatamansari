@@ -408,9 +408,10 @@
                     $('#dpTable tbody').html('');
                     $.each(response.detail, function(key, value){
                         var newRow = `<tr>
-                                        <td><input type="date" class="form-control" name="tanggal_dp[]" value="${value.tanggal_dp}" disabled></td>
-                                        <td><input type="text" class="form-control dp" name="dp[]" value="${formatRupiah(value.nilai_dp, '')}" disabled></td>
-                                        <td><button type="button" class="btn btn-info printDP" id="${value.id}">Print</button></td>
+                                        <input type="hidden" name="id_dp[]" value="${value.id}">
+                                        <td><input type="date" class="form-control" name="tanggal_dp[]" value="${value.tanggal_dp}"></td>
+                                        <td><input type="text" class="form-control dp" name="dp[]" value="${formatRupiah(value.nilai_dp, '')}"></td>
+                                        <td><button type="button" class="btn btn-info printDP" id="${value.id}">Print</button><button type="button" class="btn btn-danger removeRow">Hapus</button></td>
                                       </tr>`;
                         $('#dpTable tbody').append(newRow);
                     });

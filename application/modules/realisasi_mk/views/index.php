@@ -44,8 +44,10 @@
                <table id="table" class="table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th width="5%">No</th>
+                            <th>Nomor Akad</th>
+                            <th>Tanggal Akad</th>
                             <th width="20%">Nama Customer</th>
+                            <th>Nama Bank</th>
                             <th>Blok Kavling</th>
                             <th>Realisasi MK</th>
                             <th>Pencairan</th>
@@ -75,7 +77,9 @@
                                 echo '
                                     <tr>
                                         <td>'.$datax->no_akad.'</td>
+                                        <td>'.$datax->tanggal_akad.'</td>
                                         <td>'.$datax->nama_lengkap.'</td>
+                                        <td>'.$datax->nama_bank.'</td>
                                         <td>'.$datax->kode_kavling.'</td>
                                         <td>'.number_format($datax->realisasi_mk, 2).'</td>
                                         <td>'.number_format($datax->pencairan, 2).'</td>
@@ -462,8 +466,8 @@
                     $('#kode_blok_edit').val(data_kavling.kode_kavling)
                     $('#harga_jual_ajb_kredit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
                     $('#harga_jual_ajb_kredit_edit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
-                    $('#tanggal_akad').val(!data_akad ? '' : data_akad.tanggal_akad)
-                    $('#tanggal_akad_edit').val(!data_akad ? '' : data_akad.tanggal_akad)
+                    $('#tanggal_akad').val(!data_akad ? '' : data_akad.tanggal)
+                    $('#tanggal_akad_edit').val(!data_akad ? '' : data_akad.tanggal)
                     $('#harga_jual_cash').val(formatRupiah(data_kavling.hrg_jual, ''))
                     $('#harga_jual_cash_edit').val(formatRupiah(data_kavling.hrg_jual, ''))
 

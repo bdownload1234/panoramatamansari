@@ -75,14 +75,17 @@ class Cicilan_dp extends CI_Controller {
 
 					$id = $check["id"] ? $check["id"] : $this->db->insert_id();
 
-					foreach($post['dp'] as $key => $value){
-						$data_detail = [];
-						$data_detail['cicilan_dp_id'] = $id;
-						$data_detail['tanggal_dp'] = $post['tanggal_dp'][$key];
-						$data_detail['nilai_dp'] = str_replace(',', '', $value);
-						$data_detail['created_at'] = date('Y-m-d H:i:s');
 
-						$this->db->insert('cicilan_dp_dt', $data_detail);
+					$this->db->delete('cicilan_dp_dt', ['cicilan_dp_id' => $id]);
+
+					foreach($post['dp'] as $key => $value) {
+							$data_detail = [];
+							$data_detail['cicilan_dp_id'] = $id;
+							$data_detail['tanggal_dp'] = $post['tanggal_dp'][$key];
+							$data_detail['nilai_dp'] = str_replace(',', '', $value);
+							$data_detail['created_at'] = date('Y-m-d H:i:s');
+
+							$this->db->insert('cicilan_dp_dt', $data_detail);
 					}
 					
 					$this->db->trans_commit();
@@ -151,6 +154,8 @@ class Cicilan_dp extends CI_Controller {
         AND YEAR(tanggal_dp) = ?
         AND DAY(tanggal_dp) <= ?", 
         [$selected_month, $selected_year, $selected_day])->row()->no_cicilan;
+
+		$no_cicilan = $no_cicilan == 0 ? 1 : $no_cicilan; 
 
     // Format the transaction number, e.g., "002/PTP/VIII/2024"
     $formatted_number = str_pad($no_cicilan, 3, '0', STR_PAD_LEFT) 

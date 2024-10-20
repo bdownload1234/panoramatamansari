@@ -22,6 +22,11 @@ class Realisasi_mk extends CI_Controller {
 							WHEN d.id_hadir IS NOT NULL THEN ROW_NUMBER() OVER(ORDER BY a.id) 
 							ELSE 'Tidak ada no Akad' 
 					END AS no_akad,
+					CASE 
+							WHEN d.id_hadir IS NOT NULL THEN d.tanggal 
+							ELSE 'Tidak ada tanggal Akad' 
+					END AS tanggal_akad,
+					e.nama_bank,
 					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) AS pencairan,  
 					b.nama_lengkap, 
 					c.kode_kavling, 
@@ -29,7 +34,8 @@ class Realisasi_mk extends CI_Controller {
 			FROM realisasi_mk a
 			LEFT JOIN customer b ON a.id_customer = b.id_customer
 			LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
-			LEFT JOIN daftar_hadir d ON a.id_customer = d.id_customer;
+			LEFT JOIN daftar_hadir d ON a.id_customer = d.id_customer
+			LEFT JOIN bank e ON a.bank_id = e.id_bank
 		")->result();
 
 		$bank = $this->db->from('bank')->get()->result();
