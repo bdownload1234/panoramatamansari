@@ -43,6 +43,7 @@
                             <th width="20%">Nama Customer</th>
                             <th>Blok Kavling</th>
                             <th>Nominal Booking</th>
+                            <th>Jenis Harga</th>
                             <th>Harga Jual</th>
                             <th>Harga Acc Bank</th>
                             <th>Sisa Kewajiban</th>
@@ -73,6 +74,7 @@
                                     <td>'.$datas->nama_lengkap.'</td>
                                     <td>'.$datas->kode_kavling.'</td>
                                     <td>'.number_format($datas->nominal_booking, 2).'</td>
+                                    <td>'.($datas->jenis_pembayaran == 1 ? "Kredit" : "Cash").'</td>
                                     <td>'.($datas->jenis_pembayaran == 1 ? number_format($datas->hrg_jual, 2) : number_format($datas->harga_jual_ajb, 2)).'</td>
                                     <td>'.number_format($datas->harga_acc_bank, 2).'</td>
                                     <td>'.number_format((($datas->jenis_pembayaran == 1 ? $datas->hrg_jual : $datas->harga_jual_ajb)-$datas->harga_acc_bank), 2).'</td>

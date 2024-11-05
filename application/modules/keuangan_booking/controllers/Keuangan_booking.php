@@ -68,8 +68,9 @@ class Keuangan_booking extends CI_Controller
 
     function excel()
     {
-        $user_data['keuangan_booking'] = $this->db->query("SELECT * FROM keuangan_booking k LEFT JOIN 
-        customer c ON c.id_registrasi = k.id_registrasi")->result();
+        $user_data['keuangan_booking'] = $this->db->query("SELECT k.*,c.*,d.model_rumah FROM keuangan_booking k 
+        LEFT JOIN customer c ON c.id_registrasi = k.id_registrasi
+        LEFT JOIN kavling_peta d ON c.id_kavling = d.id_kavling")->result();
         $this->load->view('excel', $user_data);
     }
 

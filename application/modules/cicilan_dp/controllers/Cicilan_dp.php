@@ -121,7 +121,8 @@ class Cicilan_dp extends CI_Controller {
 	public function download()
     {
         $data = $this->db->query("
-	        SELECT b.nama_lengkap, c.kode_kavling, c.hrg_jual, c.harga_jual_ajb, a.*
+	        SELECT b.nama_lengkap, c.kode_kavling, c.hrg_jual, c.harga_jual_ajb, a.*,
+					(SELECT SUM(nilai_dp) FROM cicilan_dp_dt WHERE cicilan_dp_id = a.id) as total_dp
 	        FROM cicilan_dp a
 	        LEFT JOIN customer b on a.id_customer = b.id_customer
 	        LEFT JOIN kavling_peta c ON a.id_blok = c.id_kavling
