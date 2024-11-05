@@ -173,10 +173,26 @@ class Realisasi_mk extends CI_Controller {
 				$range = explode(' - ', $date);
 				$range = "WHERE d.tanggal_pencairan BETWEEN '".$range[0]."' AND '".$range[1]."'";
         $data = $this->db->query("
-					SELECT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as total_pencairan,  b.nama_lengkap, c.kode_kavling, a.*,  d.* FROM realisasi_mk a
+
+					SELECT DISTINCT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as total_pencairan,
+					CASE 
+							WHEN f.id_hadir IS NOT NULL THEN ROW_NUMBER() OVER(ORDER BY a.id)
+							ELSE 'Tidak ada no Akad' 
+					END AS no_akad,
+					CASE 
+							WHEN f.id_hadir IS NOT NULL THEN f.tanggal 
+							ELSE 'Tidak ada tanggal Akad' 
+					END AS tanggal_akad,
+					b.nama_lengkap,
+					c.kode_kavling, 
+					e.nama_bank,
+					a.*
+					FROM realisasi_mk a
 					LEFT JOIN customer b ON a.id_customer = b.id_customer
 					LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
 					LEFT JOIN realisasi_mk_dt d ON a.id = d.id_header
+					LEFT JOIN bank e ON a.bank_id = e.id_bank
+					LEFT JOIN daftar_hadir f ON a.id_customer = f.id_customer
 					$range
 					ORDER BY a.id DESC
 				")->result();

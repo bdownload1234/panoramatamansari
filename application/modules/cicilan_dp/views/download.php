@@ -53,6 +53,8 @@ header("Cache-Control: max-age=0");
                     <td>'.number_format((($datas->jenis_pembayaran == 1 ? $datas->hrg_jual : $datas->harga_jual_ajb)-$datas->harga_acc_bank), 2).'</td>
                     <td>'.number_format((($datas->jenis_pembayaran == 1 ? $datas->hrg_jual : $datas->harga_jual_ajb)-$datas->harga_acc_bank)-$datas->total_dp, 2).'</td>
                     <td>'.$datas->status.'</td>
+                    <td></td>
+                    <td></td>
                     </tr>
                 ';
 

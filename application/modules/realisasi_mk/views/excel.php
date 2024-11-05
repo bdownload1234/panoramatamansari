@@ -8,14 +8,16 @@ header("Cache-Control: private",false);
 <h2>Data Realisasi MK</h2>
 <table border="1">
     <tr>
-        <th width="5%">No</th>
-        <th width="20%">Nama Customer</th>
+        <th>Nomor Akad</th>
+        <th>Tanggal Akad</th>
+        <th>Nama Customer</th>
+        <th>Nama Bank</th>
         <th>Blok Kavling</th>
         <th>Realisasi MK</th>
+        <th>Total Pencairan</th>
         <th>Jenis Pencairan</th>
         <th>Nominal Pencairan</th>
         <th>Tanggal Pencairan</th>
-        <th>Total Pencairan</th>
         <th>Dana Blokir Progress Bangunan 1</th>
         <th>Dana Blokir Progress Bangunan 2</th>
         <th>Dana Blokir Sertifikat</th>
@@ -31,7 +33,7 @@ header("Cache-Control: private",false);
     <?php
         $no = 1;
         foreach($data as $key => $datax){
-            if(($datax->realisasi_mk-$datax->pencairan) == 0){
+            if(($datax->realisasi_mk-$datax->total_pencairan) == 0){
                 $status = 'Lunas';
             }else{
                 $status = 'Belum Lunas';
@@ -50,50 +52,24 @@ header("Cache-Control: private",false);
 
             // make switch case here based on pencairan_id
 
-            $jenis_pencairan = '';
-            switch($datax->pencairan_id){
-                case 1:
-                    $jenis_pencairan = 'Progress Bangunan 1';
-                    break;
-                case 2:
-                    $jenis_pencairan = 'Progress Bangunan 2';
-                    break;
-                case 3:
-                    $jenis_pencairan = 'Sertifikat';
-                    break;
-                case 4:
-                    $jenis_pencairan = 'IMB';
-                    break;
-                case 5:
-                    $jenis_pencairan = 'Bestek';
-                    break;
-                case 6:
-                    $jenis_pencairan = 'Listrik';
-                    break;
-                case 7:
-                    $jenis_pencairan = 'PPJB';
-                    break;
-                case 8:
-                    $jenis_pencairan = 'BPHTB';
-                    break;
-                case 9:
-                    $jenis_pencairan = 'PBB';
-                    break;
-                case 10:
-                    $jenis_pencairan = 'Lain-lain';
-                    break;
-            }
+            $data = $this->db->query("
+                SELECT * FROM realisasi_mk_dt WHERE id_header = '".$datax->id."'
+            ")->result();
+
+           
 
             echo '
                 <tr>
-                    <td>'.$no.'</td>
+                    <td>'.$datax->no_akad.'</td>
+                    <td>'.$datax->tanggal_akad.'</td>
                     <td>'.$datax->nama_lengkap.'</td>
+                    <td>'.$datax->nama_bank.'</td>
                     <td>'.$datax->kode_kavling.'</td>
                     <td>'.number_format($datax->realisasi_mk, 2).'</td>
-                    <td>'.$jenis_pencairan.'</td>
-                    <td>'.number_format($datax->pencairan, 2).'</td>
-                    <td>'.$datax->tanggal_pencairan.'</td>
                     <td>'.number_format($datax->total_pencairan, 2).'</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                     <td>'.number_format($datax->dana_blokir_progress_bangunan_1, 2).'</td>
                     <td>'.number_format($datax->dana_blokir_progress_bangunan_2, 2).'</td>
                     <td>'.number_format($datax->dana_blokir_sertifikat, 2).'</td>
@@ -107,6 +83,70 @@ header("Cache-Control: private",false);
                     <td>'.$status.'</td>
                 </tr>
             ';
+
+            foreach($data as $key => $datas){
+                $jenis_pencairan = '';
+                switch($datas->pencairan_id){
+                    case 1:
+                        $jenis_pencairan = 'Progress Bangunan 1';
+                        break;
+                    case 2:
+                        $jenis_pencairan = 'Progress Bangunan 2';
+                        break;
+                    case 3:
+                        $jenis_pencairan = 'Sertifikat';
+                        break;
+                    case 4:
+                        $jenis_pencairan = 'IMB';
+                        break;
+                    case 5:
+                        $jenis_pencairan = 'Bestek';
+                        break;
+                    case 6:
+                        $jenis_pencairan = 'Listrik';
+                        break;
+                    case 7:
+                        $jenis_pencairan = 'PPJB';
+                        break;
+                    case 8:
+                        $jenis_pencairan = 'BPHTB';
+                        break;
+                    case 9:
+                        $jenis_pencairan = 'PBB';
+                        break;
+                    case 10:
+                        $jenis_pencairan = 'Lain-lain';
+                        break;
+                }
+
+                echo '
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>'.$jenis_pencairan.'</td>
+                    <td>'.number_format($datas->pencairan, 2).'</td>
+                    <td>'.$datas->tanggal_pencairan.'</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            ';
+            
+            }
+
             $no++;
         }
     ?>
