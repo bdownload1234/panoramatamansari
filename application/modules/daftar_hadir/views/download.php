@@ -33,7 +33,7 @@ header("Cache-Control: max-age=0");
             <td>".$dt->lokasi_kavling."</td>
             <td>".$dt->nama_lengkap."</td>
             <td>".$dt->harga_jual_ajb."</td>
-            <td>".$dt->jenis_pembelian == 1 ? 'KPR' : 'Cash'."</td>
+            <td>".($dt->jenis_pembelian == 1 ? "KPR" : "Cash")."</td>
             <td>".$dt->jenis_akad."</td>
             <td>".$dt->nama_notaris."</td>
             <td>".$dt->nama_bank.' - '.$dt->no_rekening."</td>
