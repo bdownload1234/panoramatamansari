@@ -79,7 +79,7 @@
                                     <td>'.number_format($datas->harga_acc_bank, 2).'</td>
                                     <td>'.number_format((($datas->jenis_pembayaran == 1 ? $datas->hrg_jual : $datas->harga_jual_ajb)-$datas->harga_acc_bank), 2).'</td>
                                     <td>'.number_format((($datas->jenis_pembayaran == 1 ? $datas->hrg_jual : $datas->harga_jual_ajb)-$datas->harga_acc_bank)-$datas->total_dp, 2).'</td>
-                                    <td>'.(((($datas->jenis_pembayaran == 1 ? $datas->hrg_jual : $datas->harga_jual_ajb)-$datas->harga_acc_bank)-$datas->total_dp) == 0 ? "Lunas" : "Belum Lunas").'</td>
+                                    <td>'.(((($datas->jenis_pembayaran == 1 ? $datas->hrg_jual : $datas->harga_jual_ajb)-$datas->harga_acc_bank)-$datas->total_dp) == 0 ? "Lunas" : (((($datas->jenis_pembayaran == 1 ? $datas->hrg_jual : $datas->harga_jual_ajb)-$datas->harga_acc_bank)-$datas->total_dp) < 0 ? "Kelebihan Bayar" : "Belum Lunas")).'</td>
                                     <td>'.$button.'</td>
                                     </tr>
                                 ';
