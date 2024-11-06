@@ -299,6 +299,8 @@
                     harga['hrg_jual'] = data_kavling.hrg_jual;
                     harga['harga_jual_ajb'] = data_kavling.harga_jual_ajb;
 
+                    $('#nominal_booking').val(formatRupiah(data_kavling.booking_fee, ''))
+
                     $('#id_blok').val(data_kavling.id_kavling)
                     $('#kode_blok').val(data_kavling.kode_kavling)
 
