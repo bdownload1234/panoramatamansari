@@ -125,7 +125,7 @@
                 </div>
                 <div class="form-group">
                     <label for="">Nominal Booking</label>
-                    <input type="text" class="form-control" name="nominal_booking" id="nominal_booking" value="0" required>
+                    <input type="text" class="form-control" name="nominal_booking" id="nominal_booking" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Harga Jual</label>
