@@ -65,7 +65,7 @@ class Daftar_hadir extends CI_Controller {
          	$row[] = $post->jam;
          	$row[] = $post->lokasi_kavling;
 					$row[] = $post->nama_lengkap;
-					$row[] = rupiah($post->hrg_ajb);
+					$row[] = rupiah((int)$post->hrg_ajb);
          	$row[] = $post->jenis_pembelian == 0 ? 'CASH' : 'KPR';
          	$row[] = $post->jenis_akad;
          	$row[] = $post->nama_notaris;
