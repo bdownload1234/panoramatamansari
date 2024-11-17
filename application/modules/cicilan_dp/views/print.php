@@ -177,7 +177,12 @@
                         <td><?= $formatted_number ?></td>
                         <td>PTS</td>
                         <td><?= $header[0]->kode_kavling ?></td>
-                        <td><?= $detail[0]->tanggal_dp ?></td>
+                        <td>
+                            <?php
+                            $date = new DateTime($detail[0]->tanggal_dp);
+                            echo $date->format('d-m-Y');
+                            ?>
+                        </td>
                         <td>Rp <?= rupiah($detail[0]->nilai_dp) ?></td>
                     </tr>
                 </tbody>
