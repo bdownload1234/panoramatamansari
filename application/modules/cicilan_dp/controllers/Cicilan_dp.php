@@ -21,6 +21,7 @@ class Cicilan_dp extends CI_Controller {
 	        FROM cicilan_dp a
 	        LEFT JOIN customer b on a.id_customer = b.id_customer
 	        LEFT JOIN kavling_peta c ON a.id_blok = c.id_kavling
+					ORDER BY a.created_at ASC
 	    ")->result();
 	    
 		$user_data['data_ref'] = $this->data_ref;
@@ -148,31 +149,45 @@ class Cicilan_dp extends CI_Controller {
     $selected_year = $selected_date->format('Y'); // Get the year (e.g., 2024)
 
     // Query to count transactions before the selected day within the same month and year
-    $no_cicilan = $this->db->query("
-        SELECT count(*) as no_cicilan
-        FROM cicilan_dp_dt
-        WHERE MONTH(tanggal_dp) = ? 
-        AND YEAR(tanggal_dp) = ?
-        AND DAY(tanggal_dp) <= ?", 
-        [$selected_month, $selected_year, $selected_day])->row()->no_cicilan;
+    // $no_cicilan = $this->db->query("
+    //     SELECT count(*) as no_cicilan
+    //     FROM cicilan_dp_dt
+    //     WHERE MONTH(tanggal_dp) = ? 
+    //     AND YEAR(tanggal_dp) = ?
+    //     AND DAY(tanggal_dp) <= ?", 
+    //     [$selected_month, $selected_year, $selected_day])->row()->no_cicilan;
 
-		$no_cicilan = $no_cicilan == 0 ? 1 : $no_cicilan; 
+		// $no_cicilan = $no_cicilan == 0 ? 1 : $no_cicilan; 
 
     // Format the transaction number, e.g., "002/PTP/VIII/2024"
-    $formatted_number = str_pad($no_cicilan, 3, '0', STR_PAD_LEFT) 
-                        . "/PTP/" 
-                        . convertToRoman($selected_month) 
-                        . "/$selected_year";
+    
+		// $formatted_number = str_pad($no_cicilan, 3, '0', STR_PAD_LEFT) 
+		// 			. "/PTP/" 
+		// 			. convertToRoman($selected_month) 
+		// 			. "/$selected_year";
 
-		$data['formatted_number'] = $formatted_number;
 		$data['header'] = $this->db->query("
 	        SELECT b.nama_lengkap, c.kode_kavling, c.hrg_jual, a.*
 	        FROM cicilan_dp a
 	        LEFT JOIN customer b on a.id_customer = b.id_customer
 	        LEFT JOIN kavling_peta c ON a.id_blok = c.id_kavling
 	        WHERE a.id = ?", [$data['detail'][0]->cicilan_dp_id])->result();
+
+
+		$row_number = $this->db->query("
+			SELECT COUNT(*) as row_number
+			FROM cicilan_dp
+			WHERE created_at <= ?", [$data['header'][0]->created_at])->row()->row_number;
 					
-		// dd($data);
+		$formatted_number = str_pad($row_number, 3, '0', STR_PAD_LEFT)
+					. "/PTP/" 
+					. convertToRoman($selected_month) 
+					. "/$selected_year";
+
+			
+
+		$data['formatted_number'] = $formatted_number;
+					
 
 		$html = $this->load->view('print', $data, true);
 		return $this->pdfgenerator->generate($html, 'print');			
