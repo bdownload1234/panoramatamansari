@@ -193,6 +193,11 @@
                         <td><button type="button" class="btn btn-danger removeRow">Hapus</button></td>
                       </tr>`;
         $('#dpTable tbody').append(newRow);
+
+        // format input dp
+        $('.dp').mask('000,000,000,000,000', {
+            reverse:true
+        })
     });
 
     // Remove DP row with SweetAlert confirmation
@@ -241,6 +246,10 @@
                             <td><button type="button" class="btn btn-danger removeRow">Hapus</button></td>
                           </tr>`;
             $('#dpTable tbody').append(newRow);
+            
+            $('.dp').mask('000,000,000,000,000', {
+                reverse:true
+            })
         })
 
         $(document).on('click', '.printDP', function(){
