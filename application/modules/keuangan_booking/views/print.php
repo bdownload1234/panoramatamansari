@@ -177,7 +177,12 @@
                         <td><?= $keuangan_booking->no_booking ?></td>
                         <td>PTS</td>
                         <td><?= $keuangan_booking->lokasi_kavling ?></td>
-                        <td><?= $keuangan_booking->tanggal ?></td>
+                        <td>
+                            <?php
+                            $date = new DateTime($keuangan_booking->tanggal);
+                            echo $date->format('d-m-Y');
+                            ?>
+                        </td>
                         <td>Rp <?= rupiah($keuangan_booking->nominal) ?></td>
                     </tr>
                 </tbody>

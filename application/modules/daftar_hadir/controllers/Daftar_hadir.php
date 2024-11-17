@@ -54,10 +54,10 @@ class Daftar_hadir extends CI_Controller {
          	$row[] = $no;
          	
          	$a = '';
-			$histori = $this->db->query("SELECT * FROM spr WHERE id_customer ='$post->id_customer'")->result();
-			foreach($histori as $hs){
-				$a .= $hs->nomor_spr.'<br>'.' <a class="btn btn-xs btn-success" target="_blank" href="'.base_url('spr/cetak_bintang/'.$hs->id_spr).'">Cetak SPR</a><br>';
-			}
+					$histori = $this->db->query("SELECT * FROM spr WHERE id_customer ='$post->id_customer'")->result();
+					foreach($histori as $hs){
+						$a .= $hs->nomor_spr.'<br>'.' <a class="btn btn-xs btn-success" target="_blank" href="'.base_url('spr/cetak_bintang/'.$hs->id_spr).'">Cetak SPR</a><br>';
+					}
          	$row[] = $a;
          	
          	$row[] = $post->tempat;

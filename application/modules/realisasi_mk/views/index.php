@@ -468,11 +468,11 @@
                     $('#harga_jual_ajb_kredit_edit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
                     $('#tanggal_akad').val(!data_akad ? '' : data_akad.tanggal)
                     $('#tanggal_akad_edit').val(!data_akad ? '' : data_akad.tanggal)
-                    $('#harga_jual_cash').val(formatRupiah(data_kavling.hrg_jual, ''))
-                    $('#harga_jual_cash_edit').val(formatRupiah(data_kavling.hrg_jual, ''))
+                    $('#harga_jual_cash').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
+                    $('#harga_jual_cash_edit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
 
-                    $('#harga_jual_kredit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
-                    $('#harga_jual_kredit_edit').val(formatRupiah(data_kavling.harga_jual_ajb, ''))
+                    $('#harga_jual_kredit').val(formatRupiah(data_kavling.hrg_jual, ''))
+                    $('#harga_jual_kredit_edit').val(formatRupiah(data_kavling.hrg_jual, ''))
                 }
             })
         })
