@@ -398,12 +398,12 @@ class Spr extends CI_Controller {
 
 
 		$templateProcessor->setValue('nama_marketing', $item['nama_marketing']);
-		$templateProcessor->setValue('booking_fee_spr', rupiah($kavling['hrg_jual']));
+		$templateProcessor->setValue('booking_fee_spr', rupiah($kavling['hrg_jual'] == 0 ? $kavling['harga_jual_ajb'] : $kavling['hrg_jual']));
 		
 		
 		$templateProcessor->setValue('tipe_bangunan', $kavling['model_rumah']);
 		$templateProcessor->setValue('luas_tanah', rupiah($kavling['luas_tanah']));
-		$templateProcessor->setValue('harga_rumah', rupiah($kavling['hrg_jual']));
+		$templateProcessor->setValue('harga_rumah', rupiah($kavling['hrg_jual'] == 0 ? $kavling['harga_jual_ajb'] : $kavling['hrg_jual']));
 		$templateProcessor->setValue('diskon', rupiah($kavling['harga_diskon']));
 
 		$templateProcessor->saveAs('file_spr/spr_'.$idSPR.'_'.$item['nik'].'.docx');
@@ -459,12 +459,12 @@ class Spr extends CI_Controller {
 
 
 		$templateProcessor->setValue('nama_marketing', $item['nama_marketing']);
-		$templateProcessor->setValue('booking_fee_spr', rupiah($kavling['hrg_jual']));
+		$templateProcessor->setValue('booking_fee_spr', rupiah($kavling['hrg_jual'] == 0 ? $kavling['harga_jual_ajb'] : $kavling['hrg_jual']));
 		
 		
 		$templateProcessor->setValue('tipe_bangunan', $kavling['tipe_rumah']);
 		$templateProcessor->setValue('luas_tanah', rupiah($kavling['luas_tanah']));
-		$templateProcessor->setValue('harga_rumah', rupiah($kavling['hrg_jual']));
+		$templateProcessor->setValue('harga_rumah', rupiah($kavling['hrg_jual'] == 0 ? $kavling['harga_jual_ajb'] : $kavling['hrg_jual']));
 		$templateProcessor->setValue('diskon', rupiah($kavling['harga_diskon']));
 
 		$templateProcessor->saveAs('file_spr/spr_'.$idSPR.'_'.$item['nik'].'.docx');
