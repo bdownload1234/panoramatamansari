@@ -242,7 +242,34 @@
             </div>
         </div>
 
+        <!-- Sosial Media -->
+        <div class="form-group row">
+            <label for="sosial_media" class="col-sm-2 col-form-label">Sosial Media yang Dipakai</label>
+            <div class="col-sm-6">
+                <select class="form-control" id="sosial_media" name="sosial_media" onchange="updateSosialMediaLabel()" required>
+                    <option value="facebook">Facebook</option>
+                    <option value="instagram">Instagram</option>
+                    <option value="another">Lainya</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row" id="additional_sosial_media" style="display: none;">
+            <label for="additional_sosial_media_input" class="col-sm-2 col-form-label">Sosial Media Yang Digunakan</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="additional_sosial_media_input" name="additional_sosial_media_input">
+            </div>
+        </div>
+
         
+        
+        <!-- Akun Sosial Media -->
+        <div class="form-group row">
+            <label for="akun_sosial_media" class="col-sm-2 col-form-label" id="akun_sosial_media_label">Akun Sosial Media Facebook</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="akun_sosial_media" name="akun_sosial_media" required>
+            </div>
+        </div>
 
         <!-- Nomor Telepon Saudara -->
         <div class="form-group row">
@@ -327,10 +354,30 @@
 <script src="<?=base_url('assets/loading/js/jquery.loadingModal.js');?>"></script>
 
 <script type="text/javascript">
+function updateSosialMediaLabel() {
+    console.log('updateSosialMediaLabel');
+    var sosialMedia = document.getElementById('sosial_media').value;
+    var label = document.getElementById('akun_sosial_media_label');
+    var additionalInput = document.getElementById('additional_sosial_media');
+    
+    if (sosialMedia === 'facebook') {
+        label.textContent = 'Akun Sosial Media Facebook';
+        additionalInput.style.display = 'none';
+    } else if (sosialMedia === 'instagram') {
+        label.textContent = 'Akun Sosial Media Instagram';
+        additionalInput.style.display = 'none';
+    } else {
+        label.textContent = 'Akun Sosial Media Another';
+        additionalInput.style.display = 'flex';
+    }
+}
+
+
+
 var url_apps = "<?=base_url();?>";
 $(document).ready(function () {
-    $("#detail").hide();
-    $("#sumberLainnya").hide();
+$("#detail").hide();
+$("#sumberLainnya").hide();
 //----->
 //Ambil semua data customer untuk select 2
   $("#lokasi_kavling").select2({
@@ -358,7 +405,6 @@ $(document).ready(function () {
     },
     minimumInputLength: 1,
   });  
-  
   
   
   $('#lokasi_kavling').on('change', function() {
@@ -782,6 +828,9 @@ function next(){
         var lokasi_kavling          = $("#lokasi_kavling").val();
         var tipe_unit               = $("#tipe_unit_2").val();
         var pengalaman_interaksi    = $("#pengalaman_interaksi").val();
+        var sosial_media            = $("#sosial_media").val();
+        var akun_sosial_media       = $("#akun_sosial_media").val();
+        var additional_sosial_media = $("#additional_sosial_media_input").val();
 
         url = "<?php echo base_url('reg/ajax_add')?>";
 

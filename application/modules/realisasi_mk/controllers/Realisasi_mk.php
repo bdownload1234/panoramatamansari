@@ -220,7 +220,6 @@ class Realisasi_mk extends CI_Controller {
 				$range = explode(' - ', $date);
 				$range = "WHERE d.tanggal_pencairan BETWEEN '".$range[0]."' AND '".$range[1]."'";
         $data = $this->db->query("
-
 					SELECT DISTINCT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as total_pencairan,
 					CASE 
 							WHEN f.id_hadir IS NOT NULL THEN ROW_NUMBER() OVER(ORDER BY a.id)

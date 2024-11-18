@@ -42,7 +42,10 @@ class Reg extends CI_Controller {
 			'pengalaman_interaksi' 			=> $this->input->post('pengalaman_interaksi'),
 			'sumber_lain'       			=> $this->input->post('sumber_lain'),
 			'persetujuan' 					=> $this->input->post('persetujuan'),
-			'status_registrasi' 			=> '1'
+			'status_registrasi' 			=> '1',
+            'sosial_media' 					=> $this->input->post('sosial_media'),
+            'sosial_media_lainya' 			=> $this->input->post('additional_sosial_media_input'),
+            'sosial_media_akun' 			=> $this->input->post('akun_sosial_media'),
 		);
 
 		$this->db->update('registrasi', $data, ['nik' => $this->input->post('nik')]);

@@ -17,7 +17,7 @@ header("Cache-Control: max-age=0");
                 $query_user = $query_user->row();
                 
                 if(strtoupper($query_user->jabatan) == 'PIC PUSAT' || strtoupper($query_user->jabatan) == 'DIREKTUR' || strtoupper($query_user->jabatan) == 'DIREKTUR UTAMA'){
-                    echo '<th>Harga Jual AJB Kredit</th><th>Harga Jual AJB Cash</th><th width="10%">Harga Diskon</th>';
+                    echo '<th>Maksimal Kredit KPR</th><th>Harga Jual AJB Cash</th><th width="10%">Harga Diskon</th>';
                 }else if(strtoupper($query_user->jabatan) == 'ADMIN'){
                     echo '<th width="10%">Harga Diskon</th>';
                 }else{

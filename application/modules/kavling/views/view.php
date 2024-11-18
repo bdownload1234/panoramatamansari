@@ -48,7 +48,7 @@
                             $query_user = $query_user->row();
                             
                             if(strtoupper($query_user->jabatan) == 'PIC PUSAT' || strtoupper($query_user->jabatan) == 'DIREKTUR' || strtoupper($query_user->jabatan) == 'DIREKTUR UTAMA' || strtoupper($query_user->username) == 'AMEL'){
-                                echo '<th width="10%">Harga Jual AJB Kredit</th><th width="10%">Harga Jual AJB Cash</th><th width="10%">Diskon Lainnya</th>';
+                                echo '<th width="10%">Maksimal Kredit KPR</th><th width="10%">Harga Jual AJB Cash</th><th width="10%">Diskon Lainnya</th>';
                             }else if(strtoupper($query_user->jabatan) == 'ADMIN'){
                                 echo '<th width="10%">Diskon Lainnya</th>';
                             }else{
@@ -210,7 +210,7 @@
                             }
                         ?>
                         >
-                            <label class="control-label col-md-3">Harga Jual AJB Kredit</label>
+                            <label class="control-label col-md-3">Maksimal Kredit KPR</label>
                             <div class="col-md-4">
                                 <input name="harga_jual" id="harga_jual" class="form-control" type="text"
                                 <?php

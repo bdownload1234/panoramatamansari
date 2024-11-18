@@ -42,7 +42,7 @@
                         <th width="10%">Luas Tanah</th>
                         <th width="10%">Type Rumah</th>
                         <th width="10%">Model Rumah</th>
-                        <th width="10%">Harga Jual AJB Kredit</th>
+                        <th width="10%">Maksimal Kredit KPR</th>
                         <th width="10%">Harga Jual AJB Cash</th>
                         <th width="10%">Discount Lainnya</th>
                         <th width="10%">Jenis Pembayaran</th>

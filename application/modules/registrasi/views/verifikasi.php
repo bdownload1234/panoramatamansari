@@ -94,6 +94,34 @@
             </div>
         </div>
 
+        <!-- Sosial Media -->
+        <div class="form-group row">
+            <label for="sosial_media" class="col-sm-3 col-form-label">Sosial Media</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="sosial_media" name="sosial_media"  value="<?=$reg['sosial_media'];?>" readonly>
+            </div>
+        </div>
+
+        <!-- if sosial_media_lainya not empty then show -->
+        <?php if($reg['sosial_media_lainya'] != ''){ 
+            echo '<div class="form-group
+                row">
+                <label for="sosial_media_lainya" class="col-sm-3 col-form-label">Sosial Media Lainya</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" id="sosial_media_lainya" name="sosial_media_lainya"  value="'.$reg['sosial_media_lainya'].'">
+                </div>
+            </div>';
+        }?>
+
+        <!-- akun sosial media -->
+        <div class="form-group row">
+            <label for="akun_sosial_media" class="col-sm-3 col-form-label">Akun Sosial Media</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="akun_sosial_media" name="akun_sosial_media"  value="<?=$reg['sosial_media_akun'];?>" readonly>
+            </div>
+        </div>
+
+
         <!-- Nomor Telepon -->
         <div class="form-group row">
             <label for="no_telp" class="col-sm-3 col-form-label">Nomor Telepon</label>
