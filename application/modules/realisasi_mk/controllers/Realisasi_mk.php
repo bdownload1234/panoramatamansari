@@ -16,6 +16,19 @@ class Realisasi_mk extends CI_Controller {
 	public function index()
 	{
 		$user_data['data_ref'] = '';
+
+		// <option value="1">Progress Bangunan 1</option>
+		// <option value="2">Progress Bangunan 2</option>
+		// <option value="3">Sertifikat</option>
+		// <option value="4">IMB</option>
+		// <option value="5">Bestek</option>
+		// <option value="6">Listrik</option>
+		// <option value="7">PPJB</option>
+		// <option value="8">BPHTB</option>
+		// <option value="9">PBB</option>
+		// <option value="10">Lain-lain</option>
+
+
 		$data = $this->db->query("
 		  SELECT 
 					CASE 
@@ -29,7 +42,17 @@ class Realisasi_mk extends CI_Controller {
 					e.nama_bank,
 					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) AS pencairan,  
 					b.nama_lengkap, 
-					c.kode_kavling, 
+					c.kode_kavling,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 1) AS progress_bangunan_1,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 2) AS progress_bangunan_2,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 3) AS sertifikat,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 4) AS imb,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 5) AS bestek,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 6) AS listrik,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 7) AS ppjb,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 8) AS bphtb,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 9) AS pbb,
+					(SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 10) AS lain_lain,   
 					a.* 
 			FROM realisasi_mk a
 			LEFT JOIN customer b ON a.id_customer = b.id_customer
@@ -107,10 +130,34 @@ class Realisasi_mk extends CI_Controller {
 	public function get_data(){
 	    $id = $_GET['id'];
 	    $data = $this->db->query("
-		    SELECT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as pencairan, d.tanggal as tanggal_akad, b.nama_lengkap, c.kode_kavling, a.* FROM realisasi_mk a
-		    LEFT JOIN customer b ON a.id_customer = b.id_customer
-		    LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
-				LEFT JOIN daftar_hadir d ON d.id_customer = b.id_customer
+		    SELECT 
+					(
+						SELECT 
+							SUM(pencairan) 
+						FROM 
+							realisasi_mk_dt 
+						WHERE 
+							a.id = id_header
+					) as pencairan, 
+					d.tanggal as tanggal_akad, 
+					b.nama_lengkap, 
+					c.kode_kavling,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 1) AS progress_bangunan_1,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 2) AS progress_bangunan_2,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 3) AS sertifikat,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 4) AS imb,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 5) AS bestek,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 6) AS listrik,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 7) AS ppjb,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 8) AS bphtb,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 9) AS pbb,
+					(SELECT COALESCE(SUM(pencairan), 0) FROM realisasi_mk_dt WHERE a.id = id_header AND pencairan_id = 10) AS lain_lain,
+					a.* 
+				FROM 
+					realisasi_mk a 
+					LEFT JOIN customer b ON a.id_customer = b.id_customer 
+					LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling 
+					LEFT JOIN daftar_hadir d ON d.id_customer = b.id_customer
 		    WHERE a.id = '$id'
 		")->result_array();
 		

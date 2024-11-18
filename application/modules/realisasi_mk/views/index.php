@@ -83,16 +83,16 @@
                                         <td>'.$datax->kode_kavling.'</td>
                                         <td>'.number_format($datax->realisasi_mk, 2).'</td>
                                         <td>'.number_format($datax->pencairan, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_progress_bangunan_1, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_progress_bangunan_2, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_sertifikat, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_imb, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_bestek, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_listrik, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_ppjb, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_bphtb, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_pbb, 2).'</td>
-                                        <td>'.number_format($datax->dana_dll, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_progress_bangunan_1 - $datax->progress_bangunan_1, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_progress_bangunan_2 - $datax->progress_bangunan_2, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_sertifikat - $datax->sertifikat, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_imb - $datax->imb, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_bestek - $datax->bestek, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_listrik - $datax->listrik, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_ppjb - $datax->ppjb, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_bphtb - $datax->bphtb, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_pbb - $datax->pbb, 2).'</td>
+                                        <td>'.number_format($datax->dana_dll - $datax->lain_lain, 2).'</td>
                                         <td>'.$status.'</td>
                                         <td><button type="button" class="btn btn-warning btnEdit" data-id="'.$datax->id.'">Edit</button></td>
                                     </tr>
@@ -327,43 +327,43 @@
                 </table>
                 <div class="form-group">
                     <label for="">Dana Blokir Progress Bangunan 1</label>
-                    <input type="text" class="form-control" name="dana_blokir_progress_bangunan_1" id="dana_blokir_progress_bangunan_1_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_blokir_progress_bangunan_1" id="dana_blokir_progress_bangunan_1_edit" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Dana Blokir Progress Bangunan 2</label>
-                    <input type="text" class="form-control" name="dana_blokir_progress_bangunan_2" id="dana_blokir_progress_bangunan_2_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_blokir_progress_bangunan_2" id="dana_blokir_progress_bangunan_2_edit" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Dana Blokir Sertifikat</label>
-                    <input type="text" class="form-control" name="dana_blokir_sertifikat" id="dana_blokir_sertifikat_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_blokir_sertifikat" id="dana_blokir_sertifikat_edit" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Dana Blokir IMB</label>
-                    <input type="text" class="form-control" name="dana_blokir_imb" id="dana_blokir_imb_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_blokir_imb" id="dana_blokir_imb_edit" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Dana Blokir Bestek</label>
-                    <input type="text" class="form-control" name="dana_blokir_bestek" id="dana_blokir_bestek_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_blokir_bestek" id="dana_blokir_bestek_edit" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Dana Blokir Listrik</label>
-                    <input type="text" class="form-control" name="dana_blokir_listrik" id="dana_blokir_listrik_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_blokir_listrik" id="dana_blokir_listrik_edit" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Dana Blokir PPJB</label>
-                    <input type="text" class="form-control" name="dana_blokir_ppjb" id="dana_blokir_ppjb_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_blokir_ppjb" id="dana_blokir_ppjb_edit" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Dana Blokir BPHTB</label>
-                    <input type="text" class="form-control" name="dana_blokir_bphtb" id="dana_blokir_bphtb_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_blokir_bphtb" id="dana_blokir_bphtb_edit" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Dana Blokir PBB</label>
-                    <input type="text" class="form-control" name="dana_blokir_pbb" id="dana_blokir_pbb_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_blokir_pbb" id="dana_blokir_pbb_edit" value="0" readonly>
                 </div>
                 <div class="form-group">
                     <label for="">Dana Lain-lain</label>
-                    <input type="text" class="form-control" name="dana_dll" id="dana_dll_edit" value="0" required>
+                    <input type="text" class="form-control" name="dana_dll" id="dana_dll_edit" value="0" readonly>
                 </div>
             </form>
       </div>
@@ -389,21 +389,28 @@
 <script>
     var url_apps = "<?=base_url();?>";
     
-    function formatRupiah(angka, prefix){
-    	var number_string = angka.replace(/[^,\d]/g, '').toString(),
-    	split   		= number_string.split(','),
-    	sisa     		= split[0].length % 3,
-    	rupiah     		= split[0].substr(0, sisa),
-    	ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
-     
-    	// tambahkan titik jika yang di input sudah menjadi angka ribuan
-    	if(ribuan){
-    		separator = sisa ? ',' : '';
-    		rupiah += separator + ribuan.join(',');
-    	}
-     
-    	rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
-    	return prefix == undefined ? rupiah : (rupiah ? rupiah : '');
+    function formatRupiah(angka, prefix) {
+        // Ensure angka is a string and remove any non-digit characters except commas
+        var number_string = angka.toString().replace(/[^,\d-]/g, '');
+        var isNegative = number_string.startsWith('-');
+        if (isNegative) {
+            number_string = number_string.substring(1);
+        }
+    
+        var split = number_string.split(','),
+            sisa = split[0].length % 3,
+            rupiah = split[0].substr(0, sisa),
+            ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+    
+        // Add commas if the input is already in thousands
+        if (ribuan) {
+            separator = sisa ? ',' : '';
+            rupiah += separator + ribuan.join(',');
+        }
+    
+        rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+        rupiah = isNegative ? '-' + rupiah : rupiah;
+        return prefix == undefined ? rupiah : (rupiah ? prefix + rupiah : '');
     }
     
     $(document).ready(function(){
@@ -599,21 +606,34 @@
                 success: function (response) {
                     // $('#btnSave').hide();
                     // $('#btnUpdate').show();
+
+
                     var data = response.data[0];
+                    dana_blokir_progress_bangunan_1 = data.dana_blokir_progress_bangunan_1 - data.progress_bangunan_1
+                    dana_blokir_progress_bangunan_2 = data.dana_blokir_progress_bangunan_2 - data.progress_bangunan_2
+                    dana_blokir_sertifikat = data.dana_blokir_sertifikat - data.sertifikat
+                    dana_blokir_imb = data.dana_blokir_imb - data.imb
+                    dana_blokir_bestek = data.dana_blokir_bestek - data.bestek
+                    dana_blokir_listrik = data.dana_blokir_listrik - data.listrik
+                    dana_blokir_ppjb = data.dana_blokir_ppjb - data.ppjb
+                    dana_blokir_bphtb = data.dana_blokir_bphtb - data.bphtb
+                    dana_blokir_pbb = data.dana_blokir_pbb - data.pbb
+                    dana_dll = data.dana_dll - data.lain_lain
+
                     $("#formRealisasiMkEdit #id_customer_edit").attr('disabled', true)
                     $("#formRealisasiMkEdit #id_customer_edit").select2('data', { id:data.id_customer, text: data.nama_lengkap}).trigger('change');
                     $('#formRealisasiMkEdit #realisasi_mk_edit').before(`<input type="hidden" value="`+data.id+`" name="id" style="display: none">`)
                     $('#formRealisasiMkEdit #realisasi_mk_edit').val(formatRupiah(data.realisasi_mk, ''))
-                    $('#formRealisasiMkEdit #dana_blokir_progress_bangunan_1_edit').val(formatRupiah(data.dana_blokir_progress_bangunan_1, ''))
-                    $('#formRealisasiMkEdit #dana_blokir_progress_bangunan_2_edit').val(formatRupiah(data.dana_blokir_progress_bangunan_2, ''))
-                    $('#formRealisasiMkEdit #dana_blokir_sertifikat_edit').val(formatRupiah(data.dana_blokir_sertifikat, ''))
-                    $('#formRealisasiMkEdit #dana_blokir_imb_edit').val(formatRupiah(data.dana_blokir_imb, ''))
-                    $('#formRealisasiMkEdit #dana_blokir_bestek_edit').val(formatRupiah(data.dana_blokir_bestek, ''))
-                    $('#formRealisasiMkEdit #dana_blokir_listrik_edit').val(formatRupiah(data.dana_blokir_listrik, ''))
-                    $('#formRealisasiMkEdit #dana_blokir_ppjb_edit').val(formatRupiah(data.dana_blokir_ppjb, ''))
-                    $('#formRealisasiMkEdit #dana_blokir_bphtb_edit').val(formatRupiah(data.dana_blokir_bphtb, ''))
-                    $('#formRealisasiMkEdit #dana_blokir_pbb_edit').val(formatRupiah(data.dana_blokir_pbb, ''))
-                    $('#formRealisasiMkEdit #dana_dll_edit').val(formatRupiah(data.dana_dll, ''))
+                    $('#formRealisasiMkEdit #dana_blokir_progress_bangunan_1_edit').val(formatRupiah(dana_blokir_progress_bangunan_1, ''))
+                    $('#formRealisasiMkEdit #dana_blokir_progress_bangunan_2_edit').val(formatRupiah(dana_blokir_progress_bangunan_2, ''))
+                    $('#formRealisasiMkEdit #dana_blokir_sertifikat_edit').val(formatRupiah(dana_blokir_sertifikat, ''))
+                    $('#formRealisasiMkEdit #dana_blokir_imb_edit').val(formatRupiah(dana_blokir_imb, ''))
+                    $('#formRealisasiMkEdit #dana_blokir_bestek_edit').val(formatRupiah(dana_blokir_bestek, ''))
+                    $('#formRealisasiMkEdit #dana_blokir_listrik_edit').val(formatRupiah(dana_blokir_listrik, ''))
+                    $('#formRealisasiMkEdit #dana_blokir_ppjb_edit').val(formatRupiah(dana_blokir_ppjb, ''))
+                    $('#formRealisasiMkEdit #dana_blokir_bphtb_edit').val(formatRupiah(dana_blokir_bphtb, ''))
+                    $('#formRealisasiMkEdit #dana_blokir_pbb_edit').val(formatRupiah(dana_blokir_pbb, ''))
+                    $('#formRealisasiMkEdit #dana_dll_edit').val(formatRupiah(dana_dll, ''))
                     $('#formRealisasiMkEdit #bank_edit').val(data.bank_id).trigger('change');
                     $('#formRealisasiMkEdit #tanggal_akad_edit').val(data.tanggal_akad)
                     
