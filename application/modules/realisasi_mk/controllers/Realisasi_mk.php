@@ -237,7 +237,6 @@ class Realisasi_mk extends CI_Controller {
 					FROM realisasi_mk a
 					LEFT JOIN customer b ON a.id_customer = b.id_customer
 					LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
-					LEFT JOIN realisasi_mk_dt d ON a.id = d.id_header
 					LEFT JOIN bank e ON a.bank_id = e.id_bank
 					LEFT JOIN daftar_hadir f ON a.id_customer = f.id_customer
 					$range
