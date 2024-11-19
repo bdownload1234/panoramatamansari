@@ -304,11 +304,19 @@
                 {
                     var data_customer = data.data_customer;
                     var data_kavling = data.data_kavling;
+                    var data_akad = data.data_akad;
 
                     harga['hrg_jual'] = data_kavling.hrg_jual;
                     harga['harga_jual_ajb'] = data_kavling.harga_jual_ajb;
 
                     $('#nominal_booking').val(formatRupiah(data_kavling.booking_fee, ''))
+
+                    // change jenis pembayaran to kredit if data akad.jenis_pembelian == 1
+                    if(data_akad.jenis_pembelian == 1){
+                        $('#jenis_pembayaran').val(1).trigger('change');
+                    }else{
+                        $('#jenis_pembayaran').val(2).trigger('change');
+                    }
 
                     $('#id_blok').val(data_kavling.id_kavling)
                     $('#kode_blok').val(data_kavling.kode_kavling)
