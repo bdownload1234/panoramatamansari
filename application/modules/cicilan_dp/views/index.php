@@ -264,6 +264,13 @@
             }else{
                 $('#harga_jual_ajb_kredit').val(formatRupiah(harga['harga_jual_ajb'], ''))
             }
+
+            var harga_acc_bank = ($('#harga_acc_bank').val()).replaceAll(',', '');
+            var harga_jual_ajb_kredit = ($('#harga_jual_ajb_kredit').val()).replaceAll(',', '');
+            
+            var sisa_kewajiban = (harga_jual_ajb_kredit-harga_acc_bank);
+            sisa_kewajiban = sisa_kewajiban.toString();
+            $('#sisa_kewajiban').val(formatRupiah(sisa_kewajiban, ''));
         })
 
         $("#id_customer").select2({
