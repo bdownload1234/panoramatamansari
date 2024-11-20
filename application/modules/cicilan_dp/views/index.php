@@ -443,6 +443,7 @@
                     harga['harga_jual_ajb'] = response.header.harga_jual_ajb;
 
                     $('#jenis_pembayaran').val(response.header.jenis_pembayaran).trigger('change');
+                    
                     harga_jual_ajb = 0;
                     if(response.header.jenis_pembayaran == 1){
                         harga_jual_ajb = response.header.hrg_jual;
