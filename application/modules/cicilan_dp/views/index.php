@@ -271,6 +271,16 @@
             var sisa_kewajiban = (harga_jual_ajb_kredit-harga_acc_bank);
             sisa_kewajiban = sisa_kewajiban.toString();
             $('#sisa_kewajiban').val(formatRupiah(sisa_kewajiban, ''));
+
+
+            // recount kekurangan
+            var total_dp = 0;
+            $('.dp').each(function(){
+                // if nan, set to 0
+                total_dp += parseInt(($(this).val()).replaceAll(',', '')) || 0;
+            });
+
+            var kekurangan = (sisa_kewajiban-total_dp);
         })
 
         $("#id_customer").select2({
