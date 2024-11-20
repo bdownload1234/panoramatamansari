@@ -331,8 +331,8 @@
 
                     $('#nominal_booking').val(formatRupiah(data_kavling.booking_fee, ''))
 
-                    // change jenis pembayaran to kredit if data akad.jenis_pembelian == 1
-                    if(data_akad.jenis_pembelian == 1){
+                    // change jenis pembayaran to kredit if data akad.jenis_pembelian == 1 and data akad is not empty
+                    if(data_akad.jenis_pembelian == 1 && data_akad.jenis_pembelian != null){
                         $('#jenis_pembayaran').val(1).trigger('change');
                     }else{
                         $('#jenis_pembayaran').val(2).trigger('change');
@@ -443,7 +443,7 @@
                     harga['harga_jual_ajb'] = response.header.harga_jual_ajb;
 
                     $('#jenis_pembayaran').val(response.header.jenis_pembayaran).trigger('change');
-                    
+
                     harga_jual_ajb = 0;
                     if(response.header.jenis_pembayaran == 1){
                         harga_jual_ajb = response.header.hrg_jual;
