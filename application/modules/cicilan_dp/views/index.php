@@ -281,6 +281,9 @@
             });
 
             var kekurangan = (sisa_kewajiban-total_dp);
+
+            kekurangan = kekurangan.toString();
+            $('#kekurangan').val(formatRupiah(kekurangan, ''))
         })
 
         $("#id_customer").select2({
@@ -366,6 +369,10 @@
             });
 
             var kekurangan = (sisa_kewajiban-total_dp);
+
+            
+            kekurangan = kekurangan.toString();
+            $('#kekurangan').val(formatRupiah(kekurangan, ''))
         })
         
         $('#dpTable').on('keyup', '.dp', function(){
