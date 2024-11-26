@@ -218,6 +218,13 @@ class Realisasi_mk extends CI_Controller {
     {
 				$date = $_GET['range'];
 				$range = explode(' - ', $date);
+
+				// format the range to to be Y-m-d
+				$range = array_map(function($date){
+					$date = explode('/', $date);
+					return $date[2].'-'.$date[0].'-'.$date[1];
+				}, $range);
+
 				$range = "WHERE f.tanggal BETWEEN '".$range[0]."' AND '".$range[1]."'";
         $data = $this->db->query("
 					SELECT DISTINCT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as total_pencairan,
