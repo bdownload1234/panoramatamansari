@@ -218,7 +218,7 @@ class Realisasi_mk extends CI_Controller {
     {
 				$date = $_GET['range'];
 				$range = explode(' - ', $date);
-				$range = "WHERE d.tanggal_pencairan BETWEEN '".$range[0]."' AND '".$range[1]."'";
+				$range = "WHERE g.tanggal_pencairan BETWEEN '".$range[0]."' AND '".$range[1]."'";
         $data = $this->db->query("
 					SELECT DISTINCT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as total_pencairan,
 					CASE 
@@ -232,12 +232,14 @@ class Realisasi_mk extends CI_Controller {
 					b.nama_lengkap,
 					c.kode_kavling, 
 					e.nama_bank,
+					g.tanggal_pencairan,
 					a.*
 					FROM realisasi_mk a
 					LEFT JOIN customer b ON a.id_customer = b.id_customer
 					LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
 					LEFT JOIN bank e ON a.bank_id = e.id_bank
 					LEFT JOIN daftar_hadir f ON a.id_customer = f.id_customer
+					LEFT JOIN realisasi_mk_dt g ON a.id = g.id_header
 					$range
 					ORDER BY a.id DESC
 				")->result();
