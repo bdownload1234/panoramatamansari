@@ -59,6 +59,7 @@ class Realisasi_mk extends CI_Controller {
 			LEFT JOIN kavling_peta c ON a.id_kavling = c.id_kavling
 			LEFT JOIN daftar_hadir d ON a.id_customer = d.id_customer
 			LEFT JOIN bank e ON a.bank_id = e.id_bank
+			ORDER BY d.tanggal ASC
 		")->result();
 
 		$bank = $this->db->from('bank')->get()->result();
@@ -239,7 +240,7 @@ class Realisasi_mk extends CI_Controller {
 					LEFT JOIN bank e ON a.bank_id = e.id_bank
 					LEFT JOIN daftar_hadir f ON a.id_customer = f.id_customer
 					$range
-					ORDER BY a.id DESC
+					ORDER BY f.tanggal ASC
 				")->result();
 		$user_data['data'] = $data;
         $this->load->view('excel', $user_data);
