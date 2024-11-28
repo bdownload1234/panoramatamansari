@@ -25,7 +25,7 @@ header("Cache-Control: max-age=0");
         $no =1;
         foreach ($downData as $dt) {
             echo "<tr>
-            <td>".$no++."</td>
+            <td>".$dt->id_hadir."</td>
             <td>".$dt->nomor_spr."</td>
             <td>".$dt->tempat."</td>
             <td>".(date_format(date_create($dt->tanggal), "d/m/Y"))."</td>

@@ -23,7 +23,6 @@ class Daftar_hadir_model extends CI_Model {
 		$this->db->join('customer', 'customer.id_customer = daftar_hadir.id_customer', 'left');
 		$this->db->join('notaris', 'notaris.id_notaris = daftar_hadir.id_notaris', 'left');
 		$this->db->join('bank', 'bank.id_bank = daftar_hadir.id_bank', 'left');
-		$this->db->order_by('daftar_hadir.tanggal', 'asc');
 
 		$i = 0;
 	

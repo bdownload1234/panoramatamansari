@@ -51,28 +51,27 @@ class Daftar_hadir extends CI_Controller {
 
 			$no++;
 			$row = array();
-         	$row[] = $no;
-         	
-         	$a = '';
-					$histori = $this->db->query("SELECT * FROM spr WHERE id_customer ='$post->id_customer'")->result();
-					foreach($histori as $hs){
-						$a .= $hs->nomor_spr.'<br>'.' <a class="btn btn-xs btn-success" target="_blank" href="'.base_url('spr/cetak_bintang/'.$hs->id_spr).'">Cetak SPR</a><br>';
-					}
-         	$row[] = $a;
-         	
-         	$row[] = $post->tempat;
-         	$row[] = $post->tanggal;
-         	$row[] = $post->jam;
-         	$row[] = $post->lokasi_kavling;
-					$row[] = $post->nama_lengkap;
-					$row[] = rupiah((int)$post->hrg_ajb);
-         	$row[] = $post->jenis_pembelian == 0 ? 'CASH' : 'KPR';
-         	$row[] = $post->jenis_akad;
-         	$row[] = $post->nama_notaris;
+			$row[] = $post->id_hadir;
+			
+			$a = '';
+			$histori = $this->db->query("SELECT * FROM spr WHERE id_customer ='$post->id_customer'")->result();
+			foreach($histori as $hs){
+				$a .= $hs->nomor_spr.'<br>'.' <a class="btn btn-xs btn-success" target="_blank" href="'.base_url('spr/cetak_bintang/'.$hs->id_spr).'">Cetak SPR</a><br>';
+			}
+			$row[] = $a;
+			
+			$row[] = $post->tempat;
+			$row[] = $post->tanggal;
+			$row[] = $post->jam;
+			$row[] = $post->lokasi_kavling;
+			$row[] = $post->nama_lengkap;
+			$row[] = rupiah((int)$post->hrg_ajb);
+			$row[] = $post->jenis_pembelian == 0 ? 'CASH' : 'KPR';
+			$row[] = $post->jenis_akad;
+			$row[] = $post->nama_notaris;
 			$row[] = $post->nama_bank.'<br>'.$post->no_rekening;
 			$row[] = $post->ket;
 
-			//add html for action
 			$row[] = $link_kirim_pesan.$link_edit.$link_hapus;
 
 			$data[] = $row;
