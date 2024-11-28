@@ -32,7 +32,7 @@ class Realisasi_mk extends CI_Controller {
 		$data = $this->db->query("
 		  SELECT 
 					CASE 
-							WHEN d.id_hadir IS NOT NULL THEN ROW_NUMBER() OVER(ORDER BY a.id) 
+							WHEN d.id_hadir IS NOT NULL THEN d.id 
 							ELSE 'Tidak ada no Akad' 
 					END AS no_akad,
 					CASE 
@@ -223,7 +223,7 @@ class Realisasi_mk extends CI_Controller {
         $data = $this->db->query("
 					SELECT DISTINCT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as total_pencairan,
 					CASE 
-							WHEN f.id_hadir IS NOT NULL THEN ROW_NUMBER() OVER(ORDER BY a.id)
+							WHEN d.id_hadir IS NOT NULL THEN d.id 
 							ELSE 'Tidak ada no Akad' 
 					END AS no_akad,
 					CASE 
