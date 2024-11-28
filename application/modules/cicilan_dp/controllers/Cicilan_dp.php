@@ -67,13 +67,13 @@ class Cicilan_dp extends CI_Controller {
 	        $data['harga_acc_bank'] = str_replace(',', '', $post['harga_acc_bank']);
 	        $data['status'] = (str_replace(',', '', $post['kekurangan']) == 0 ? 'Lunas' : 'Belum Lunas');
 					$data['jenis_pembayaran'] = $post['jenis_pembayaran'];
-	        $data['created_at'] = date('Y-m-d H:i:s');
 	       // $data['created_by'] = $this->input->post('username');
 	       
 	        $check = $this->db->from('cicilan_dp')->where('id_customer', $post['id_customer'])->get()->row_array();
 	        if($check){
 	            $this->db->update('cicilan_dp', $data, ['id_customer' => $post['id_customer']]);
 	        }else{
+							$data['created_at'] = date('Y-m-d H:i:s');
 	            $this->db->insert('cicilan_dp', $data);
 	        }
 
