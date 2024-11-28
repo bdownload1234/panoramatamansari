@@ -39,7 +39,7 @@
                <table id="table" class="table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th width="5%">No</th>
+                            <th width="5%">No Akad</th>
                             <th width="20%">Nama Customer</th>
                             <th>Blok Kavling</th>
                             <th>Nominal Booking</th>
@@ -70,7 +70,7 @@
                                 
                                 echo '
                                     <tr>
-                                    <td>'.($key+1).'</td>
+                                    <td>'.$datas->no_akad.'</td>
                                     <td>'.$datas->nama_lengkap.'</td>
                                     <td>'.$datas->kode_kavling.'</td>
                                     <td>'.number_format($datas->nominal_booking, 2).'</td>
