@@ -33,7 +33,7 @@ class Realisasi_mk extends CI_Controller {
 		  SELECT 
 					CASE 
 							WHEN d.id_hadir IS NOT NULL THEN d.id_hadir 
-							ELSE 'Tidak ada no Akad' 
+							ELSE 'Tidak ada Nomor Akad' 
 					END AS no_akad,
 					CASE 
 							WHEN d.id_hadir IS NOT NULL THEN d.tanggal 
@@ -224,7 +224,7 @@ class Realisasi_mk extends CI_Controller {
 					SELECT DISTINCT (SELECT SUM(pencairan) FROM realisasi_mk_dt WHERE a.id = id_header) as total_pencairan,
 					CASE 
 							WHEN f.id_hadir IS NOT NULL THEN f.id_hadir 
-							ELSE 'Tidak ada no Akad' 
+							ELSE 'Tidak ada Nomor Akad' 
 					END AS no_akad,
 					CASE 
 							WHEN f.id_hadir IS NOT NULL THEN f.tanggal 

@@ -40,7 +40,7 @@
            <table id="table" class="table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th width="5%">No Akad</th>
+                        <th width="5%">Nomor Akad</th>
                         <th width="15%">Nomor SPR</th>
                         <th width="10%">Tempat</th>
                         <th width="10%">Tanggal Akad</th>

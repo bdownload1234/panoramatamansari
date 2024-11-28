@@ -39,7 +39,7 @@
                <table id="table" class="table table-striped table-hover table-bordered" cellspacing="0" width="100%">
                     <thead>
                         <tr>
-                            <th width="5%">No Akad</th>
+                            <th width="5%">Nomor Akad</th>
                             <th width="20%">Nama Customer</th>
                             <th>Blok Kavling</th>
                             <th>Nominal Booking</th>

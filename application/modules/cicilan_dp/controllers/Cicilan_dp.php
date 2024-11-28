@@ -18,7 +18,7 @@ class Cicilan_dp extends CI_Controller {
 	    $data = $this->db->query("
 	        SELECT b.nama_lengkap, c.kode_kavling, c.hrg_jual, c.harga_jual_ajb, a.*,
 					(SELECT SUM(nilai_dp) FROM cicilan_dp_dt WHERE cicilan_dp_id = a.id) as total_dp,
-					CASE WHEN d.id_hadir IS NOT NULL THEN d.id_hadir ELSE 'Tidak ada no akad' END as no_akad
+					CASE WHEN d.id_hadir IS NOT NULL THEN d.id_hadir ELSE 'Tidak ada Nomor Akad' END as no_akad
 	        FROM cicilan_dp a
 	        LEFT JOIN customer b on a.id_customer = b.id_customer
 	        LEFT JOIN kavling_peta c ON a.id_blok = c.id_kavling
@@ -127,7 +127,7 @@ class Cicilan_dp extends CI_Controller {
         $data = $this->db->query("
 	        SELECT b.nama_lengkap, c.kode_kavling, c.hrg_jual, c.harga_jual_ajb, a.*,
 					(SELECT SUM(nilai_dp) FROM cicilan_dp_dt WHERE cicilan_dp_id = a.id) as total_dp,
-					CASE WHEN d.id_hadir IS NOT NULL THEN d.id_hadir ELSE 'Tidak ada no akad' END as no_akad
+					CASE WHEN d.id_hadir IS NOT NULL THEN d.id_hadir ELSE 'Tidak ada Nomor Akad' END as no_akad
 	        FROM cicilan_dp a
 	        LEFT JOIN customer b on a.id_customer = b.id_customer
 	        LEFT JOIN kavling_peta c ON a.id_blok = c.id_kavling

@@ -7,7 +7,7 @@ header("Cache-Control: max-age=0");
 <table border="1">
     <thead>
         <tr>
-            <th width="5%">No Akad</th>
+            <th width="5%">Nomor Akad</th>
             <th width="20%">Nama Customer</th>
             <th>Blok Kavling</th>
             <th>Nominal Booking</th>
