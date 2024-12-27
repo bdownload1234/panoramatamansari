@@ -332,11 +332,11 @@
                     $('#nominal_booking').val(formatRupiah(data_kavling.booking_fee, ''))
 
                     // change jenis pembayaran to kredit if data akad.jenis_pembelian == 1 and data akad is not empty
-                    if(data_akad.jenis_pembelian == 1){
-                        $('#jenis_pembayaran').val(1).trigger('change');
-                    }else if(data_akad.jenis_pembelian == 2){
-                        $('#jenis_pembayaran').val(2).trigger('change');
-                    }
+                    // if(data_akad.jenis_pembelian == 1){
+                    //     $('#jenis_pembayaran').val(1).trigger('change');
+                    // }else if(data_akad.jenis_pembelian == 2){
+                    //     $('#jenis_pembayaran').val(2).trigger('change');
+                    // }
 
                     $('#id_blok').val(data_kavling.id_kavling)
                     $('#kode_blok').val(data_kavling.kode_kavling)
