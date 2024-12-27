@@ -65,7 +65,7 @@ class Cicilan_dp extends CI_Controller {
 	        $data['id_blok'] = $post['id_blok'];
 	        $data['nominal_booking'] = str_replace(',', '', $post['nominal_booking']);
 	        $data['harga_acc_bank'] = str_replace(',', '', $post['harga_acc_bank']);
-	        $data['status'] = (str_replace(',', '', $post['kekurangan']) == 0 ? 'Lunas' : 'Belum Lunas');
+	        $data['status'] = (str_replace(',', '', $post['kekurangan']) <= 0 ? 'Lunas' : 'Belum Lunas');
 					$data['jenis_pembayaran'] = $post['jenis_pembayaran'];
 	       // $data['created_by'] = $this->input->post('username');
 	       

@@ -503,7 +503,14 @@ class Daftar_hadir extends CI_Controller {
 	}
 	
 	public function ajax_select_customer(){
-        $items = $this->db->query("SELECT b.id_customer, b.nama_lengkap FROM spr a LEFT JOIN customer b ON a.id_customer = b.id_customer WHERE b.nama_lengkap LIKE '%".$this->input->get('q')."%' AND a.status_spr IN (0, 11, 12) GROUP BY b.id_customer, b.nama_lengkap")->result_array();
+	
+        // $items = $this->db->query("SELECT b.id_customer, b.nama_lengkap FROM spr a LEFT JOIN customer b ON a.id_customer = b.id_customer WHERE b.nama_lengkap LIKE '%".$this->input->get('q')."%' AND a.status_spr IN (0, 11, 12) GROUP BY b.id_customer, b.nama_lengkap")->result_array();
+				$items = $this->db->query("SELECT b.id_customer, b.nama_lengkap FROM spr a 
+				LEFT JOIN customer b ON a.id_customer = b.id_customer 
+				JOIN cicilan_dp c ON a.id_customer = c.id_customer
+				WHERE b.nama_lengkap LIKE '%".$this->input->get('q')."%' AND a.status_spr IN (0, 11, 12) AND c.status = 'Lunas' 
+				GROUP BY b.id_customer, b.nama_lengkap")->result_array();
+
         //output to json format
         echo json_encode($items);
     }
