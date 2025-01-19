@@ -6,7 +6,7 @@ header("Cache-Control: max-age=0");
 ?>
 <table border="1">
         <tr>
-            <th width="5%">No</th>
+            <th width="5%">Nomor Akad</th>
             <th>Nomor SPR</th>
             <th>Tempat</th>
             <th>Tanggal Akad</th>

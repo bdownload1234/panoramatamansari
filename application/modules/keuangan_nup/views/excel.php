@@ -9,12 +9,11 @@ header("Cache-Control: private",false);
 <table border="1">
     <tr>
         <td width="50px">No.</td>
-        <td width="150px">Tanggal NUP</td>
-        <td width="350">Nama Customer</td>
-        <td width="150px">No. Telp</td>
-        <td width="150px">Lokasi Rumah</td>
-        <td width="150px">Tipe Rumah Rumah</td>
-        <td width="150px">Nominal Booking</td>
+        <td width="150px">Tanggal Booking</td>
+        <td width="350">Nama Lengkap</td>
+        <td width="150px">Lokasi Kavling</td>
+        <td width="150px">Model Rumah</td>
+        <td width="150px">Nominal</td>
     </tr>
     <?php 
     $no = 1;
@@ -23,7 +22,6 @@ header("Cache-Control: private",false);
         <td>'.$no++.'</td>
         <td>'.tgl_indo($dt->tanggal).'</td>
         <td>'.$dt->nama_lengkap.'</td>
-        <td>'.$dt->no_telp.'</td>
         <td>'.$dt->lokasi_kavling.'</td>
         <td>'.$dt->tipe_unit.'</td>
         <td align="right">'.rupiah($dt->nominal).'</td>

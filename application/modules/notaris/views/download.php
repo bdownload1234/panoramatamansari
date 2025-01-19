@@ -8,7 +8,7 @@ header("Cache-Control: max-age=0");
 <table border="1">
         <tr>
             <th>No</th>
-            <th>Kode NOtaris</th>
+            <th>Kode Notaris</th>
             <th>Nama Notaris</th>
             <th>No Telp</th>
             <th>Alamat Notaris</th>
@@ -19,7 +19,7 @@ header("Cache-Control: max-age=0");
         foreach ($downData as $dt) {
             echo '<tr>
             <td>'.$no++.'</td>
-            <td>'.$dt->kode_notaris.'</td>
+            <td>"'.$dt->kode_notaris.'"</td>
             <td>'.$dt->nama_notaris.'</td>
             <td>'.$dt->no_telp.'</td>
             <td>'.$dt->alamat.'</td>

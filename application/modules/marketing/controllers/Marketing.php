@@ -28,7 +28,7 @@ class Marketing extends CI_Controller
 
     public function download()
 	{
-		$data['downData'] = $this->db->query("SELECT * FROM marketing")->result();
+		$data['downData'] = $this->db->query("SELECT * FROM marketing ORDER BY id_marketing DESC")->result();
 		$this->load->view('download', $data);
 	}
 

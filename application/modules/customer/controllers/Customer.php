@@ -26,7 +26,7 @@ class Customer extends CI_Controller {
 
 	public function download()
 	{
-		$data['downData'] = $this->db->query("SELECT * FROM customer")->result();
+		$data['downData'] = $this->db->query("SELECT * FROM customer ORDER BY id_customer DESC")->result();
 		$this->load->view('download', $data);
 	}
 

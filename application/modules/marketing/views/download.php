@@ -8,13 +8,17 @@ header("Cache-Control: max-age=0");
 <table border="1">
         <tr>
             <th>No</th>
-            <th>Kode Kavling</th>
+            <th>ID Kode Agen</th>
             <th>Nama Marketing</th>
             <th>Nama Agen</th>
-            <th>Alamat Marketing</th>
-            <th>No. Telp Marketing</th>
-            <th>Pekerjaan</th>
             <th>Jenis Kelamin</th>
+            <th>No. Telp</th>
+            <th>Alamat</th>
+            <th>NIK</th>
+            <th>KTP</th>
+            <th>NPWP</th>
+            <th>Presentase Fee Marketing</th>
+            <th>Harga Jual AJB</th>
         </tr>
 
         <?php 
@@ -25,10 +29,14 @@ header("Cache-Control: max-age=0");
             <td>'.$dt->kode_marketing.'</td>
             <td>'.$dt->nama_marketing.'</td>
             <td>'.$dt->nama_agen.'</td>
-            <td>'.$dt->alamat_marketing.'</td>
-            <td>'.$dt->no_telp_marketing.'</td>
-            <td>'.$dt->pekerjaan.'</td>
             <td>'.$dt->jenis_kelamin.'</td>
+            <td>'.$dt->no_telp_marketing.'</td>
+            <td>'.$dt->alamat_marketing.'</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
         </tr>';
         }
         ?>

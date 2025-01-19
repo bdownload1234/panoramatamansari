@@ -213,6 +213,7 @@ class Daftar_hadir extends CI_Controller {
 			$this->db->join('notaris', 'daftar_hadir.id_notaris = notaris.id_notaris', 'left');
 			$this->db->join('bank', 'daftar_hadir.id_bank = bank.id_bank', 'left');
 			$this->db->join('spr', 'customer.id_customer = spr.id_customer', 'left');
+			$this->db->order_by('daftar_hadir.id_hadir', 'desc');
 			
 			$data['downData'] = $this->db->get()->result();
 			$this->load->view('download', $data);

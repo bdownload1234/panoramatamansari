@@ -38,7 +38,7 @@
                 <thead>
                     <tr>
                         <th width="5%">No</th>
-                        <th width="10%">Lokasi</th>
+                        <th width="10%">Kode Kavling</th>
                         <th width="10%">Luas Tanah</th>
                         <th width="10%">Type Rumah</th>
                         <th width="10%">Model Rumah</th>
