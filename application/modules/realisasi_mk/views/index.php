@@ -83,16 +83,16 @@
                                         <td>'.$datax->kode_kavling.'</td>
                                         <td>'.number_format($datax->realisasi_mk, 2).'</td>
                                         <td>'.number_format($datax->pencairan, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_progress_bangunan_1 - $datax->progress_bangunan_1, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_progress_bangunan_2 - $datax->progress_bangunan_2, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_sertifikat - $datax->sertifikat, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_imb - $datax->imb, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_bestek - $datax->bestek, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_listrik - $datax->listrik, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_ppjb - $datax->ppjb, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_bphtb - $datax->bphtb, 2).'</td>
-                                        <td>'.number_format($datax->dana_blokir_pbb - $datax->pbb, 2).'</td>
-                                        <td>'.number_format($datax->dana_dll - $datax->lain_lain, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_progress_bangunan_1, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_progress_bangunan_2, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_sertifikat, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_imb, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_bestek, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_listrik, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_ppjb, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_bphtb, 2).'</td>
+                                        <td>'.number_format($datax->dana_blokir_pbb, 2).'</td>
+                                        <td>'.number_format($datax->dana_dll, 2).'</td>
                                         <td>'.$status.'</td>
                                         <td><button type="button" class="btn btn-warning btnEdit" data-id="'.$datax->id.'">Edit</button></td>
                                     </tr>
