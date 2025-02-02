@@ -609,16 +609,16 @@
 
 
                     var data = response.data[0];
-                    dana_blokir_progress_bangunan_1 = data.dana_blokir_progress_bangunan_1 - data.progress_bangunan_1
-                    dana_blokir_progress_bangunan_2 = data.dana_blokir_progress_bangunan_2 - data.progress_bangunan_2
-                    dana_blokir_sertifikat = data.dana_blokir_sertifikat - data.sertifikat
-                    dana_blokir_imb = data.dana_blokir_imb - data.imb
-                    dana_blokir_bestek = data.dana_blokir_bestek - data.bestek
-                    dana_blokir_listrik = data.dana_blokir_listrik - data.listrik
-                    dana_blokir_ppjb = data.dana_blokir_ppjb - data.ppjb
-                    dana_blokir_bphtb = data.dana_blokir_bphtb - data.bphtb
-                    dana_blokir_pbb = data.dana_blokir_pbb - data.pbb
-                    dana_dll = data.dana_dll - data.lain_lain
+                    dana_blokir_progress_bangunan_1 = data.dana_blokir_progress_bangunan_1 // - data.progress_bangunan_1
+                    dana_blokir_progress_bangunan_2 = data.dana_blokir_progress_bangunan_2 // - data.progress_bangunan_2
+                    dana_blokir_sertifikat = data.dana_blokir_sertifikat // - data.sertifikat
+                    dana_blokir_imb = data.dana_blokir_imb // - data.imb
+                    dana_blokir_bestek = data.dana_blokir_bestek // - data.bestek
+                    dana_blokir_listrik = data.dana_blokir_listrik // - data.listrik
+                    dana_blokir_ppjb = data.dana_blokir_ppjb // - data.ppjb
+                    dana_blokir_bphtb = data.dana_blokir_bphtb // - data.bphtb
+                    dana_blokir_pbb = data.dana_blokir_pbb // - data.pbb
+                    dana_dll = data.dana_dll // - data.lain_lain
 
                     $("#formRealisasiMkEdit #id_customer_edit").attr('disabled', true)
                     $("#formRealisasiMkEdit #id_customer_edit").select2('data', { id:data.id_customer, text: data.nama_lengkap}).trigger('change');
